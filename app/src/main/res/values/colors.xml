@@ -11,5 +11,7 @@
 
     <color name="aprovado">#4CAF50</color>
     <color name="reprovado">#F44336</color>
+    <color name="sem_nota">#DDD</color>
+    <color name="esperando_av3">#FBC02D</color>
 
 </resources>

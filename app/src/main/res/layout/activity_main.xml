@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/backgroundDefault"
     android:orientation="vertical"
-    tools:context="org.lema.notasapp.activity.MainActivity">
+    tools:context="org.lema.notasapp.activity.NotasActivity">
 
     <include layout="@layout/toolbar_default" />
 

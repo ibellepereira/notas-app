@@ -45,11 +45,12 @@ public class MateriasAdapter extends BaseAdapter {
         View linha = activity.getLayoutInflater().inflate(R.layout.linha_materia, viewGroup, false);
 
         TextView nomeDaMateria = (TextView) linha.findViewById(R.id.materia_nome);
-        nomeDaMateria.setText(getItem(i).getNome());
+
+        Materia materia = getItem(i);
+        nomeDaMateria.setText(materia.getNome());
 
         View status = (View) linha.findViewById(R.id.status_materia);
-        if(i % 2 == 0)
-            status.setBackgroundResource(R.drawable.fundo_reprovado);
+        status.setBackgroundResource(materia.getStatus().getColor());
 
         return linha;
     }

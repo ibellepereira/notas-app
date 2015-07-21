@@ -35,6 +35,7 @@
                     android:layout_height="match_parent">
 
                     <EditText
+                        android:id="@+id/ed_matricula"
                         android:inputType="number"
                         android:hint="Matrícula"
                         android:textColorHint="@color/colorTextPlaceholder"
@@ -43,6 +44,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/ed_senha"
                         android:hint="Senha"
                         android:textColorHint="@color/colorTextPlaceholder"
                         android:textColor="@color/colorTextDefault"
@@ -56,7 +58,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="#448AFF"
-                            android:text="Login" />
+                            android:text="Login"
+                            android:id="@+id/btn_login" />
                     </com.andexert.library.RippleView >
 
                     <TextView
