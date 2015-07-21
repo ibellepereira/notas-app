@@ -6,6 +6,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#536DFE</color>
 
+    <color name="colorTextDefault">#212121</color>
+    <color name="colorTextPlaceholder">#B6B6B6</color>
+
     <color name="aprovado">#4CAF50</color>
     <color name="reprovado">#F44336</color>
 
