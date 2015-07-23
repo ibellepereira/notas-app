@@ -1,84 +1,129 @@
 package org.lema.notasapp.activity;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import org.lema.notasapp.MostrarNotasDelegate;
 import org.lema.notasapp.R;
-import org.lema.notasapp.modelo.Credenciais;
+import org.lema.notasapp.dao.AlunoDao;
+import org.lema.notasapp.modelo.Aluno;
 import org.lema.notasapp.task.LoginTask;
 
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends ActionBarActivity implements MostrarNotasDelegate {
 
     private Button mLoginButton;
 
     private EditText mMatricula;
     private EditText mSenha;
 
+    private CheckBox mEntrarAutomaticamente;
+
+    private Aluno aluno;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        setupActionBar();
-
         mMatricula = (EditText) findViewById(R.id.ed_matricula);
         mSenha = (EditText) findViewById(R.id.ed_senha);
+        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.cb_entrar_automaticamente);
 
-        mMatricula.setText("1423331034");
-        mSenha.setText("zaion6491");
+        limparDados();
 
         mLoginButton = (Button) findViewById(R.id.btn_login);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String matricula = mMatricula.getText().toString();
-                String senha = mSenha.getText().toString();
 
-                if(matricula.isEmpty())
-                    mMatricula.setError("Insira a matricula");
+                if(ehValido(mMatricula, mSenha)) {
+                    String matricula = mMatricula.getText().toString();
+                    String senha = mSenha.getText().toString();
 
-                if(senha.isEmpty())
-                    mSenha.setError("Insira a senha");
+                    aluno = new Aluno(matricula, senha);
 
-                if(matricula.isEmpty() || senha.isEmpty())
-                    return;
-
-                Credenciais credenciais = new Credenciais(matricula, senha);
-
-                LoginTask task = new LoginTask(LoginActivity.this, credenciais);
-                task.execute();
+                    login(aluno);
+                }
             }
         });
 
     }
 
-    public void lidarComRetorno(String json) {
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Aluno aluno = new AlunoDao(getSharedPreferences("notas-app", MODE_PRIVATE)).busca();
+
+        if(aluno != null) {
+            login(aluno);
+            return;
+        }
+    }
+
+    private boolean entrarAutomaticamente() {
+        return mEntrarAutomaticamente.isChecked();
+    }
+
+    private void login(Aluno aluno) {
+        LoginTask task = new LoginTask(this, aluno);
+        task.execute();
+    }
+
+    private void limparDados() {
+        mMatricula.setText("");
+        mSenha.setText("");
+    }
+
+    public boolean ehValido(EditText mMatricula, EditText mSenha) {
+        boolean ehValido = true;
+
+        if(mMatricula.getText().toString().isEmpty()) {
+            mMatricula.setError("Insira a matricula");
+            ehValido = false;
+        }
+
+        if(mSenha.getText().toString().isEmpty()) {
+            mSenha.setError("Insira a senha");
+            ehValido = false;
+        }
+
+        return ehValido;
+
+    }
+
+    public void mostrarNotas(String json) {
+        if(entrarAutomaticamente()) {
+            SharedPreferences preferences = getSharedPreferences("notas-app", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+
+            AlunoDao dao = new AlunoDao(preferences, editor);
+            dao.salvar(aluno);
+
+            editor.commit();
+        }
+
+
         Intent irParaNotas = new Intent(this, NotasActivity.class);
         irParaNotas.putExtra("materias", json);
+
         startActivity(irParaNotas);
     }
 
-    private void setupActionBar() {
-        Toolbar bar = (Toolbar) findViewById(R.id.bar);
-        bar.setTitle("");
-
-        setSupportActionBar(bar);
+    public void lidaComErro(Exception e) {
+        //Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 }

@@ -15,13 +15,13 @@ import java.util.Scanner;
  */
 public class WebClient {
 
-    private String url;
+    private final String url;
 
     public WebClient(String url) {
         this.url = url;
     }
 
-    public String doGet() {
+    public String get() {
         try {
             URL url = new URL(this.url);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
