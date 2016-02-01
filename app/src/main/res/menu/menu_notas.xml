@@ -12,7 +12,7 @@
 
         <item
             android:id="@+id/menu_logout"
-            android:title="Logout" />
+            android:title="Trocar foto" />
 
 
     </item>
