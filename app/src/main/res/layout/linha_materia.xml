@@ -1,46 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.andexert.library.RippleView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:rv_color="@color/colorSecundary"
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="72dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <RelativeLayout
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fff"
-        android:orientation="horizontal"
-        android:padding="10dp">
 
-        <View
-            android:id="@+id/status_materia"
-            android:layout_width="15sp"
-            android:layout_height="15sp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="60dp"
-            android:layout_marginLeft="15dp"
+        <RelativeLayout
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:orientation="horizontal">
 
-            android:layout_marginTop="8dp"
-            android:background="@drawable/fundo_aprovado" />
+            <View
+                android:foregroundGravity="center_vertical"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="16dp"
+                android:id="@+id/status_materia"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/fundo_aprovado" />
 
-        <TextView
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@id/status_materia"
-            android:id="@+id/materia_nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="Programacao orientada a obejeto 2qq"
-            android:textColor="@color/colorTextDefault"
-            android:textSize="18sp" />
+            <LinearLayout
+                android:paddingTop="4dp"
+                android:layout_marginLeft="72dp"
+                android:orientation="vertical"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imagem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/ic_action" />
+            <TextView
+                android:id="@+id/materia_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Programacao"
+                android:textColor="@color/colorTextDefault"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Programacao"
+                android:textColor="@color/sem_nota"
+                android:textSize="13sp" />
 
-    </RelativeLayout>
-</com.andexert.library.RippleView>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imagem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="1dp"
+                android:src="@drawable/ic_action" />
+
+        </RelativeLayout>
+</LinearLayout>

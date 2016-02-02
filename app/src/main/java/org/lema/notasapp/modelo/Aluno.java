@@ -1,9 +1,11 @@
 package org.lema.notasapp.modelo;
 
+import java.io.Serializable;
+
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class Aluno {
+public class Aluno implements Serializable {
 
     private String matricula;
     private String senha;

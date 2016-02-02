@@ -5,7 +5,7 @@ package org.lema.notasapp.delegate;
  */
 public interface MostrarNotasDelegate {
 
-    public void mostrarNotas(String json);
+    public void lidaComRetorno(String json);
 
     public void lidaComErro(Exception e);
 }

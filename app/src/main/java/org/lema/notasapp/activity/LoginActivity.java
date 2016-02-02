@@ -1,38 +1,21 @@
 package org.lema.notasapp.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-
-import org.lema.notasapp.MostrarNotasDelegate;
 import org.lema.notasapp.R;
 import org.lema.notasapp.dao.AlunoDao;
 import org.lema.notasapp.modelo.Aluno;
-import org.lema.notasapp.task.LoginTask;
 
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class LoginActivity extends AppCompatActivity implements MostrarNotasDelegate {
+public class LoginActivity extends AppCompatActivity {
 
     private Button mLoginButton;
 
@@ -89,8 +72,10 @@ public class LoginActivity extends AppCompatActivity implements MostrarNotasDele
     }
 
     private void login(Aluno aluno) {
-        LoginTask task = new LoginTask(this, aluno);
-        task.execute();
+        Intent irParaBoletim = new Intent(this, BoletimActivity.class);
+        irParaBoletim.putExtra("aluno", aluno);
+
+        startActivity(irParaBoletim);
     }
 
     private void limparDados() {
@@ -113,28 +98,6 @@ public class LoginActivity extends AppCompatActivity implements MostrarNotasDele
 
         return ehValido;
 
-    }
-
-    public void mostrarNotas(String json) {
-        if(entrarAutomaticamente()) {
-            SharedPreferences preferences = getSharedPreferences("notas-app", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-
-            AlunoDao dao = new AlunoDao(preferences, editor);
-            dao.salvar(aluno);
-
-            editor.commit();
-        }
-
-
-        Intent irParaNotas = new Intent(this, NotasActivity.class);
-        irParaNotas.putExtra("materias", json);
-
-        startActivity(irParaNotas);
-    }
-
-    public void lidaComErro(Exception e) {
-        //Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
     }
 
 }

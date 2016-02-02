@@ -1,34 +1,23 @@
 package org.lema.notasapp.task;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 import org.lema.notasapp.Enderecos;
-import org.lema.notasapp.activity.LoginActivity;
 import org.lema.notasapp.client.WebClient;
+import org.lema.notasapp.delegate.MostrarNotasDelegate;
 import org.lema.notasapp.modelo.Aluno;
 
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class LoginTask extends AsyncTask<Void, Void, String> {
+public class BoletimTask extends AsyncTask<Void, Void, String> {
 
-    private LoginActivity activity;
-    private ProgressDialog dialog;
-
+    private MostrarNotasDelegate delegate;
     private Aluno aluno;
 
-    public LoginTask(LoginActivity activity, Aluno aluno) {
+    public BoletimTask(MostrarNotasDelegate activity, Aluno aluno) {
         this.aluno = aluno;
-        this.activity = activity;
-    }
-
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-
-        dialog = ProgressDialog.show(activity, "Processando", "Carregando...", true, false);
-
+        this.delegate = activity;
     }
 
     @Override
@@ -38,9 +27,7 @@ public class LoginTask extends AsyncTask<Void, Void, String> {
                                      aluno.getSenha());
 
         try {
-            String json = client.get();
-
-            return json;
+            return client.get();
 
         } catch(Exception e) {
 
@@ -54,10 +41,8 @@ public class LoginTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String json) {
         super.onPostExecute(json);
 
-        dialog.dismiss();
-
         if(json != null)
-            activity.mostrarNotas(json);
+            delegate.lidaComRetorno(json);
 
     }
 }

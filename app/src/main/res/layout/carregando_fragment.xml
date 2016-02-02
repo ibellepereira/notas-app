@@ -5,11 +5,11 @@
     android:background="#DDD"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_gravity="center"
+    <ProgressBar
+        android:id="@+id/pbHeaderProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/loading" />
+        android:layout_gravity="center" />
 
 
 </FrameLayout>

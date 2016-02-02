@@ -10,11 +10,11 @@ import java.util.List;
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class MateriaJsonConverter {
+public class BoletimConverter {
 
     private final String json;
 
-    public MateriaJsonConverter(String json) {
+    public BoletimConverter(String json) {
         this.json = json;
     }
 
