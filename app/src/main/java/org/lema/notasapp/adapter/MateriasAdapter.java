@@ -45,11 +45,14 @@ public class MateriasAdapter extends BaseAdapter {
         View linha = activity.getLayoutInflater().inflate(R.layout.linha_materia, viewGroup, false);
 
         TextView nomeDaMateria = (TextView) linha.findViewById(R.id.materia_nome);
+        TextView notas = (TextView) linha.findViewById(R.id.estado);
 
         Materia materia = getItem(i);
-        nomeDaMateria.setText(materia.getNome());
 
-        View status = (View) linha.findViewById(R.id.status_materia);
+        nomeDaMateria.setText(materia.getNome());
+        notas.setText("AV1: " + materia.getAv1() + " AV2: " + materia.getAv2() + " AV3: " + materia.getAv3());
+
+        View status = linha.findViewById(R.id.status);
         status.setBackgroundResource(materia.getStatus().getColor());
 
         return linha;

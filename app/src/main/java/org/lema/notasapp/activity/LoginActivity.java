@@ -32,10 +32,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
 
         mMatricula = (EditText) findViewById(R.id.ed_matricula);
-        mSenha = (EditText) findViewById(R.id.ed_senha);
-        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.cb_entrar_automaticamente);
 
-        limparDados();
+        mSenha = (EditText) findViewById(R.id.ed_senha);
+        mSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSenha.setText("");
+            }
+        });
+
+        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.cb_entrar_automaticamente);
 
         mLoginButton = (Button) findViewById(R.id.btn_login);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -59,12 +65,21 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        Aluno aluno = new AlunoDao(getSharedPreferences("notas-app", MODE_PRIVATE)).busca();
+        Aluno aluno = new AlunoDao(this).getAluno();
 
         if(aluno != null) {
-            login(aluno);
-            return;
+            populaFormulario(aluno);
         }
+    }
+
+    private void populaFormulario(Aluno aluno) {
+        mMatricula.setText(aluno.getMatricula());
+        mSenha.setText(aluno.getSenha());
+    }
+
+    public void onRestart() {
+        super.onRestart();
+        limparDados();
     }
 
     private boolean entrarAutomaticamente() {
@@ -74,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     private void login(Aluno aluno) {
         Intent irParaBoletim = new Intent(this, BoletimActivity.class);
         irParaBoletim.putExtra("aluno", aluno);
+        irParaBoletim.putExtra("entrar-automaticamente", entrarAutomaticamente());
 
         startActivity(irParaBoletim);
     }

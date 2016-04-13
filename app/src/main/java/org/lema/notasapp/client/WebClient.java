@@ -3,6 +3,7 @@ package org.lema.notasapp.client;
 
 import java.io.PrintStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ public class WebClient {
             Scanner scanner = new Scanner(connection.getInputStream());
             StringBuilder builder = new StringBuilder();
 
-            while(scanner.hasNextLine()) {
+            while (scanner.hasNextLine()) {
                 String linha = scanner.nextLine();
                 builder.append(linha);
             }

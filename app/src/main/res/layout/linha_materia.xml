@@ -1,57 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="72dp"
+    android:layout_height="wrap_content"
+    android:minHeight="72dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-        <RelativeLayout
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#fff"
-            android:orientation="horizontal">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <View
-                android:foregroundGravity="center_vertical"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="16dp"
-                android:id="@+id/status_materia"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/fundo_aprovado" />
 
-            <LinearLayout
-                android:paddingTop="4dp"
-                android:layout_marginLeft="72dp"
-                android:orientation="vertical"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content">
+        <View
+            android:id="@+id/status"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="16dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/fundo_aprovado"/>
 
-            <TextView
-                android:id="@+id/materia_nome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Programacao"
-                android:textColor="@color/colorTextDefault"
-                android:textSize="18sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Programacao"
-                android:textColor="@color/sem_nota"
-                android:textSize="13sp" />
+        <TextView
+            android:textColor="@android:color/black"
+            android:id="@+id/materia_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/action"
+            android:layout_toRightOf="@+id/status"
+            android:paddingTop="16dp"
+            android:text="oi"
+            android:textSize="16sp"/>
 
-            </LinearLayout>
+        <TextView
+            android:textColor="@color/sem_nota"
+            android:id="@+id/estado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/materia_nome"
+            android:layout_toLeftOf="@id/action"
+            android:layout_toRightOf="@+id/status"
+            android:paddingBottom="16dp"
+            android:text="oi"
+            android:textSize="14sp"/>
 
-            <ImageView
-                android:id="@+id/imagem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="1dp"
-                android:src="@drawable/ic_action" />
+        <ImageView
+            android:id="@+id/action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="16dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_action"/>
 
         </RelativeLayout>
 </LinearLayout>

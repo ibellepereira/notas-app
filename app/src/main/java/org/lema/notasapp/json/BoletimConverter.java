@@ -35,7 +35,6 @@ public class BoletimConverter {
                                               materiaJson.getDouble("media"));
 
                 materias.add(materia);
-
             }
 
             return materias;
