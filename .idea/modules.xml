@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NotasApp.iml" filepath="$PROJECT_DIR$/NotasApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notas-app-refactoring.iml" filepath="$PROJECT_DIR$/notas-app-refactoring.iml" />
     </modules>
   </component>
 </project>
-

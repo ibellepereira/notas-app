@@ -2,6 +2,7 @@ package org.lema.notasapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.dao.AlunoDao;
+import org.lema.notasapp.fragment.NotasFragment;
 import org.lema.notasapp.modelo.Aluno;
 
 /**
@@ -33,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
 
         mMatricula = (EditText) findViewById(R.id.ed_matricula);
 
+        final TextInputLayout matricula_l = (TextInputLayout) findViewById(R.id.matricula_l);
+        final TextInputLayout senha_l = (TextInputLayout) findViewById(R.id.senha_l);
         mSenha = (EditText) findViewById(R.id.ed_senha);
         mSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(ehValido(mMatricula, mSenha)) {
                     String matricula = mMatricula.getText().toString();
                     String senha = mSenha.getText().toString();
-
+                    NotasFragment.getMatricula(matricula);
                     aluno = new Aluno(matricula, senha);
 
                     login(aluno);

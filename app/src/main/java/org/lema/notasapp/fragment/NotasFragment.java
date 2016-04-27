@@ -34,6 +34,7 @@ public class NotasFragment extends Fragment {
     private BoletimActivity activity;
     private View fragment;
     private AccountHeader headerResult;
+    private static String matricula;
 
     @Nullable
     @Override
@@ -70,7 +71,7 @@ public class NotasFragment extends Fragment {
         SecondaryDrawerItem meusRankings = new SecondaryDrawerItem().withName("Meus Rankings");
 
         IProfile perfil = new ProfileDrawerItem()
-                                .withEmail("1413331050")
+                                .withEmail(matricula)
                                 .withName("Leonardo Cordeiro")
                                 .withIcon(R.drawable.ic_sem_foto);
 
@@ -94,5 +95,11 @@ public class NotasFragment extends Fragment {
     private void preparaHamburguerIcone(Drawer result) {
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
+    }
+    public static String getMatricula(String mat)
+    {
+
+        matricula = mat;
+        return matricula;
     }
 }
