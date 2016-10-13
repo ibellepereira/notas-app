@@ -9,6 +9,7 @@ import android.widget.TextView;
 import org.lema.notasapp.R;
 import org.lema.notasapp.modelo.Materia;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,7 +51,7 @@ public class MateriasAdapter extends BaseAdapter {
         Materia materia = getItem(i);
 
         nomeDaMateria.setText(materia.getNome());
-        notas.setText("AV1: " + materia.getAv1() + " AV2: " + materia.getAv2() + " AV3: " + materia.getAv3());
+        notas.setText("AV1: " + materia.getNotaDaAv1() + " AV2: " + materia.getNotaDaAv2() + " AV3: " + materia.getNotaDaAv3());
 
         View status = linha.findViewById(R.id.status);
         status.setBackgroundResource(materia.getStatus().getColor());

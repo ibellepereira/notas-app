@@ -1,35 +1,51 @@
 package org.lema.notasapp.modelo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by leonardocordeiro on 18/07/15.
  */
-public class Materia {
+
+public class Materia implements Parcelable {
 
     private String nome;
-    private Double av1;
-    private Double av2;
-    private Double av3;
+    private Double notaDaAv1;
+    private Double notaDaAv2;
+    private Double notaDaAv3;
     private Double media;
+    private String ano;
     private StatusDeAprovacao aprovacao;
 
+    public Materia() {
+
+    }
 
     public Materia(String nome, Double av1, Double av2, Double av3, Double media) {
         this.nome = nome;
-        this.av1 = av1;
-        this.av2 = av2;
-        this.av3 = av3;
+        this.notaDaAv1 = av1;
+        this.notaDaAv2 = av2;
+        this.notaDaAv3 = av3;
         this.media = media;
 
-        if(media >= 6)
-            aprovacao = StatusDeAprovacao.APROVADO;
-        else if(media <= 6 && av3 != 0)
-            aprovacao = StatusDeAprovacao.REPROVADO;
-        else if(av2 == 0 && av3 == 0)
-            aprovacao = StatusDeAprovacao.SEM_NOTA;
-        else if(media <= 6 && av3 == 0)
-            aprovacao = StatusDeAprovacao.ESPERANDO_AV3;
-
     }
+
+    protected Materia(Parcel in) {
+        nome = in.readString();
+        ano = in.readString();
+    }
+
+    public static final Creator<Materia> CREATOR = new Creator<Materia>() {
+        @Override
+        public Materia createFromParcel(Parcel in) {
+            return new Materia(in);
+        }
+
+        @Override
+        public Materia[] newArray(int size) {
+            return new Materia[size];
+        }
+    };
 
     public String getNome() {
         return nome;
@@ -39,28 +55,36 @@ public class Materia {
         this.nome = nome;
     }
 
-    public Double getAv1() {
-        return av1;
+    public String getAno() {
+        return ano;
     }
 
-    public void setAv1(Double av1) {
-        this.av1 = av1;
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
-    public Double getAv2() {
-        return av2;
+    public Double getNotaDaAv1() {
+        return notaDaAv1;
     }
 
-    public void setAv2(Double av2) {
-        this.av2 = av2;
+    public void setNotaDaAv1(Double av1) {
+        this.notaDaAv1 = av1;
     }
 
-    public Double getAv3() {
-        return av3;
+    public Double getNotaDaAv2() {
+        return notaDaAv2;
     }
 
-    public void setAv3(Double av3) {
-        this.av3 = av3;
+    public void setNotaDaAv2(Double av2) {
+        this.notaDaAv2 = av2;
+    }
+
+    public Double getNotaDaAv3() {
+        return notaDaAv3;
+    }
+
+    public void setNotaDaAv3(Double av3) {
+        this.notaDaAv3 = av3;
     }
 
     public Double getMedia() {
@@ -68,7 +92,25 @@ public class Materia {
     }
 
     public StatusDeAprovacao getStatus() {
+        if(media >= 6)
+            aprovacao = StatusDeAprovacao.APROVADO;
+        else if(media <= 6 && notaDaAv3 != 0)
+            aprovacao = StatusDeAprovacao.REPROVADO;
+        else if(notaDaAv3 == 0 && notaDaAv3 == 0)
+            aprovacao = StatusDeAprovacao.SEM_NOTA;
+        else if(media <= 6 && notaDaAv3 == 0)
+            aprovacao = StatusDeAprovacao.ESPERANDO_AV3;
         return aprovacao;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nome);
+        parcel.writeString(ano);
+    }
 }

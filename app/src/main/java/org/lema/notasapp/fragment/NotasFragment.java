@@ -1,7 +1,5 @@
 package org.lema.notasapp.fragment;
 
-import android.accounts.Account;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,8 +21,11 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.activity.BoletimActivity;
-import org.lema.notasapp.activity.PerfilActivity;
 import org.lema.notasapp.adapter.MateriasAdapter;
+import org.lema.notasapp.modelo.Materia;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by leonardocordeiro on 01/02/16.
@@ -33,7 +34,10 @@ public class NotasFragment extends Fragment {
     private Toolbar toolbar;
     private BoletimActivity activity;
     private View fragment;
-    private AccountHeader headerResult;
+
+    private List<Materia> materias = new ArrayList<>();
+
+
 
     @Nullable
     @Override
@@ -45,8 +49,10 @@ public class NotasFragment extends Fragment {
         preparaToolBar();
         preparaNavigationDrawer();
 
-        ListView materias = (ListView) fragment.findViewById(R.id.lv_materias);
-        materias.setAdapter(new MateriasAdapter(activity, activity.getBoletim()));
+        this.materias = getArguments().getParcelableArrayList("materias");
+
+        ListView listView = (ListView) fragment.findViewById(R.id.lv_materias);
+        listView.setAdapter(new MateriasAdapter(activity, materias));
 
         return fragment;
     }
@@ -62,8 +68,8 @@ public class NotasFragment extends Fragment {
         SecondaryDrawerItem meuPerfil = new SecondaryDrawerItem().withName("Meu Perfil").withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
-                Intent irParaPerfil = new Intent(activity, PerfilActivity.class);
-                startActivity(irParaPerfil);
+//                Intent irParaPerfil = new Intent(activity, PerfilActivity.class);
+//                startActivity(irParaPerfil);
                 return false;
             }
         });

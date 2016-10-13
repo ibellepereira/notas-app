@@ -1,39 +1,52 @@
 package org.lema.notasapp.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
+import org.lema.notasapp.adapter.MateriasAdapter;
 import org.lema.notasapp.dao.AlunoDao;
-import org.lema.notasapp.delegate.MostrarNotasDelegate;
-import org.lema.notasapp.json.BoletimConverter;
+import org.lema.notasapp.domain.service.BoletimService;
+import org.lema.notasapp.fragment.CarregandoFragment;
+import org.lema.notasapp.fragment.NotasFragment;
 import org.lema.notasapp.modelo.Aluno;
-import org.lema.notasapp.modelo.EstadoNotasActivity;
+import org.lema.notasapp.modelo.Boletim;
 import org.lema.notasapp.modelo.Materia;
-import org.lema.notasapp.task.BoletimService;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import br.com.mytho.mobi.activity.BaseActivity;
+import br.com.mytho.mobi.activity.OAuthActivity;
+import br.com.mytho.mobi.activity.utils.DialogUtils;
+import br.com.mytho.mobi.exception.ConnectionErrorException;
+import br.com.mytho.mobi.exception.HTTPUnauthorizedException;
+import br.com.mytho.mobi.exception.UnavailableException;
+import br.com.mytho.mobi.infra.retrofit.DefaultServiceCallback;
+import br.com.mytho.mobi.oauth2.client.OAuth2AccessTokenClient;
+import br.com.mytho.mobi.oauth2.model.AccessToken;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
-public class BoletimActivity extends ActionBarActivity implements MostrarNotasDelegate {
-    private List<Materia> boletim = new ArrayList<>();
-    private BoletimService buscador = new BoletimService();
-    private EstadoNotasActivity estado;
+public class BoletimActivity extends OAuthActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notas_activity);
 
-        alteraEstadoEExecuta(EstadoNotasActivity.BUSCAR_NOTAS);
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+        tx.replace(R.id.boletim, new CarregandoFragment());
+        tx.commit();
+
+        buscaBoletim();
     }
 
     private Aluno getAluno() {
@@ -46,25 +59,29 @@ public class BoletimActivity extends ActionBarActivity implements MostrarNotasDe
         return true;
     }
 
+    public void colocarNaTela(Boletim boletim) {
+        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+
+        Bundle arguments = new Bundle();
+
+        ArrayList<Materia> materias = (ArrayList<Materia>) boletim.getMaterias();
+        arguments.putParcelableArrayList("materias", materias);
+
+        NotasFragment notasFragment = new NotasFragment();
+        notasFragment.setArguments(arguments);
+
+        tx.replace(R.id.boletim, notasFragment);
+        tx.commit();
+    }
+
     public void buscaBoletim() {
-        buscador.buscar(getAluno())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<String>() {
-                @Override
-                public void call(String s) {
-                    lidaComRetorno(s);
-                    if(entrarAutomaticamente())
-                        salvarCredenciais();
-
-                }
-            }, new Action1<Throwable>() {
-                @Override
-                public void call(Throwable throwable) {
-                    lidaComErro((Exception) throwable);
-                }
-            });
-
+        BoletimService.BoletimServiceContract boletimService = (BoletimService.BoletimServiceContract) new BoletimService().context(this).clazz(BoletimService.BoletimServiceContract.class).build();
+        boletimService.getBoletim(getAluno()).enqueue(new DefaultServiceCallback<Boletim>(new DefaultServiceCallback.OnResponse<Boletim>() {
+            @Override
+            public void onResponse(Call<Boletim> call, Response<Boletim> response) {
+                colocarNaTela(response.body());
+            }
+        }));
     }
 
     private void salvarCredenciais() {
@@ -76,39 +93,24 @@ public class BoletimActivity extends ActionBarActivity implements MostrarNotasDe
         return getIntent().getBooleanExtra("entrar-automaticamente", false);
     }
 
-    @Override
-    public void lidaComRetorno(String json) {
-        this.boletim = getBoletim(json);
-
-        alteraEstadoEExecuta(EstadoNotasActivity.NA_TELA);
+    @Subscribe
+    public void handle(UnavailableException exception) {
+        buscaBoletim();
     }
 
-    public List<Materia> getBoletim() {
-        return this.boletim;
+    @Subscribe
+    public void handle(ConnectionErrorException exception) {
+        dialogUtils.showConnectionError(new DialogUtils.OnRetryListener() {
+            @Override
+            public void onRetry() {
+                buscaBoletim();
+            }
+        });
     }
 
-    private List<Materia> getBoletim(String json) {
-        return new BoletimConverter(json).toList();
+    @Subscribe
+    public void onReceiveAccessToken(AccessToken accessToken) {
+        buscaBoletim();
     }
 
-    public void lidaComErro(Exception e) {
-        if(e.getCause() instanceof FileNotFoundException) dadosInvalidos();
-        else erroGenerico();
-        finish();
-    }
-
-    public void dadosInvalidos() {
-        Toast.makeText(this, "Matrícula ou Senha inválidos", Toast.LENGTH_LONG).show();
-        finish();
-    }
-
-    public void erroGenerico() {
-        Toast.makeText(this, "Problema no servidor", Toast.LENGTH_LONG).show();
-        finish();
-    }
-
-    public void alteraEstadoEExecuta(EstadoNotasActivity activity) {
-        this.estado = activity;
-        this.estado.executa(this);
-    }
 }

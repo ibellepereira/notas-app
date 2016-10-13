@@ -2,7 +2,6 @@ package org.lema.notasapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,10 +11,16 @@ import org.lema.notasapp.R;
 import org.lema.notasapp.dao.AlunoDao;
 import org.lema.notasapp.modelo.Aluno;
 
+import java.util.Properties;
+
+import br.com.mytho.mobi.activity.AccessTokenActivity;
+import br.com.mytho.mobi.oauth2.OAuth2;
+import br.com.mytho.mobi.oauth2.model.AccessToken;
+
 /**
  * Created by leonardocordeiro on 21/07/15.
  */
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AccessTokenActivity {
 
     private Button mLoginButton;
 
@@ -28,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        prepateOAuth2Properties();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
@@ -58,6 +64,22 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    private void prepateOAuth2Properties() {
+        Properties oauth2Properties = new Properties();
+
+        oauth2Properties.setProperty(OAuth2.BASE_URL, "http://notasapp-lema.rhcloud.com/notasapp-backend/");
+        oauth2Properties.setProperty(OAuth2.SCOPE, "read");
+        oauth2Properties.setProperty(OAuth2.CLIENT_ID, "mobile-client");
+        oauth2Properties.setProperty(OAuth2.CLIENT_SECRET, "462441f0-852d-11e6-ae22-56b6b6499611");
+
+        OAuth2.setProperties(oauth2Properties);
+    }
+
+    @Override
+    public void onReceiveAccessToken(AccessToken accessToken) {
 
     }
 
