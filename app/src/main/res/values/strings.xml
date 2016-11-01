@@ -9,4 +9,6 @@
     <string name="password">Senha</string>
     <string name="login_automatically">Entrar automaticamente</string>
     <string name="login">Login</string>
+    <string name="logo_uezo">Logo da Uezo</string>
+    <string name="logo_app">Logo da Uezo</string>
 </resources>
