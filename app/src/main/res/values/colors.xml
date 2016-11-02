@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="backgroundDefault">#DDD</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorSecundary">#727272</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#536DFE</color>
+    <color name="backgroundDefault">#ededed</color>
+    <color name="backgroundDefaultLight">#ffffff</color>
+    <color name="colorPrimary">#0374ae</color>
+    <color name="colorSecundary">#ff2f57</color>
+    <color name="colorPrimaryDark">#105a97</color>
+    <color name="colorAccent">#fefefe</color>
 
-    <color name="colorTextDefault">#212121</color>
-    <color name="colorTextPlaceholder">#B6B6B6</color>
+    <color name="colorTextDefaultDark">#0a0a0a</color>
+    <color name="colorTextDefaultLight">#ffffff</color>
+    <color name="colorTextSchedule">#ad000000</color>
+    <!--<color name="colorTextPlaceholder">#B6B6B6</color>-->
 
-    <color name="aprovado">#4CAF50</color>
-    <color name="reprovado">#F44336</color>
-    <color name="sem_nota">#DDD</color>
-    <color name="esperando_av3">#FBC02D</color>
+    <color name="colorTextInteractiveLight">#8effffff</color>
+    <color name="colorTextInteractiveDark">#51000000</color>
 
-    <color name="loginContent">#DDD</color>
-    <color name="loginButton">#FF5252</color>
+    <color name="colorDashboardButton">#0e97dd</color>
+    <color name="colorDashboardButtonDisabled">#7f7f7f</color>
 
-    <color name="endColorGradient">#6E3869</color>
-    <color name="startColorGradient">#06619C</color>
+    <color name="colorGradientBackgroundTop">#714c71</color>
+    <color name="colorGradientBackgroundBottom">#285e92</color>
+
+    <color name="colorGradeMissing">#c8b7b7d1</color>
+    <color name="colorGradeOver">#c80374ae</color>
+    <color name="colorGradeUnder">#c8ff2f57</color>
+
+    <color name="colorDivider">#1f000000</color>
+
 </resources>

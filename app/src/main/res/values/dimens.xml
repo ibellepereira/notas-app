@@ -2,7 +2,21 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    
-    <dimen name="activity_splash_screen_logo_uezo">250dp</dimen>
-    <dimen name="activity_splash_screen_logo_app">100dp</dimen>
+
+    <dimen name="toolbar_text">34sp</dimen>
+
+    <dimen name="navigation_drawer_user_height">24dp</dimen>
+    <dimen name="navigation_drawer_option_height">48dp</dimen>
+    <dimen name="navigation_drawer_option_string_vertical_padding">8dp</dimen>
+    <dimen name="navigation_drawer_user_string">14sp</dimen>
+    <dimen name="navigation_drawer_option_string">14sp</dimen>
+
+    <dimen name="divider_vertical_margin">1dp</dimen>
+    <dimen name="divider_thickness">1dp</dimen>
+
+    <dimen name="button_text">14sp</dimen>
+    <dimen name="button_textfield_vertical_margin">6dp</dimen>
+
+    <dimen name="news_text">56sp</dimen>
+
 </resources>
