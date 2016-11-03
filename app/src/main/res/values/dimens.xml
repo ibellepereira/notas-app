@@ -17,6 +17,23 @@
     <dimen name="button_text">14sp</dimen>
     <dimen name="button_textfield_vertical_margin">6dp</dimen>
 
+
+
+    <dimen name="news_sliding_tab_height">225dp</dimen>
+
+    <dimen name="dashboard_button_side">80dp</dimen>
+    <dimen name="dashboard_button_corner_radius">4dp</dimen>
+    <dimen name="dashboard_button_icon_side">60dp</dimen>
+    <dimen name="dashboard_button_icon_horizontal_margin">10dp</dimen>
+    <dimen name="dashboard_button_icon_vertical_margin">10dp</dimen>
+
+
+    <dimen name="dashboard_button_text_padding">4sp</dimen>
+    <dimen name="dashboard_button_text_side">14sp</dimen>
+
+
+    <dimen name="dashboard_button_right_margin">35dp</dimen>
+
     <dimen name="news_text">56sp</dimen>
 
     <dimen name="activity_splash_screen_logo_uezo">250dp</dimen>
