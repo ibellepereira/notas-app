@@ -8,7 +8,8 @@
     <string name="login_code">Matrícula</string>
     <string name="password">Senha</string>
     <string name="login_automatically">Entrar automaticamente</string>
-    <string name="login">Login</string>
+    <string name="login">Logar</string>
     <string name="logo_uezo">Logo da Uezo</string>
     <string name="logo_app">Logo da Uezo</string>
+    <string name="terms_and_conditios">Ao logar você aceita os Termos e Condições do aplicativo, leia com atenção!</string>
 </resources>

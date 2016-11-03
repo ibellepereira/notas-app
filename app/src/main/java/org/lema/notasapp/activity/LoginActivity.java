@@ -2,10 +2,16 @@ package org.lema.notasapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.dao.AlunoDao;
@@ -28,6 +34,7 @@ public class LoginActivity extends AccessTokenActivity {
     private EditText mSenha;
 
     private CheckBox mEntrarAutomaticamente;
+    private TextView mTermosCondicoes;
 
     private Aluno aluno;
 
@@ -38,6 +45,7 @@ public class LoginActivity extends AccessTokenActivity {
         setContentView(R.layout.login_activity);
 
         mMatricula = (EditText) findViewById(R.id.ed_matricula);
+        mTermosCondicoes = (TextView) findViewById(R.id.tv_login_termos);
 
         mSenha = (EditText) findViewById(R.id.ed_senha);
         mSenha.setOnClickListener(new View.OnClickListener() {
@@ -47,7 +55,7 @@ public class LoginActivity extends AccessTokenActivity {
             }
         });
 
-        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.cb_entrar_automaticamente);
+        mEntrarAutomaticamente = new CheckBox(this);
 
         mLoginButton = (Button) findViewById(R.id.btn_login);
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +72,24 @@ public class LoginActivity extends AccessTokenActivity {
                 }
             }
         });
+
+        preparaTermosECondicoesLink();
+
+    }
+
+    private void preparaTermosECondicoesLink() {
+        SpannableString spannedString = new SpannableString(getResources().getString(R.string.terms_and_conditios));
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, TermosCondicoesActivity.class);
+                startActivity(intent);
+            }
+        };
+        spannedString.setSpan(clickableSpan, 24, 42, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTermosCondicoes.setText(spannedString);
+        mTermosCondicoes.setMovementMethod(LinkMovementMethod.getInstance());
+        mTermosCondicoes.setHighlightColor(ContextCompat.getColor(this, R.color.colorAccent));
 
     }
 
