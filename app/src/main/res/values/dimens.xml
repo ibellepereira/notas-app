@@ -36,4 +36,10 @@
 
     <dimen name="news_text">56sp</dimen>
 
+    <dimen name="activity_splash_screen_logo_uezo">250dp</dimen>
+    <dimen name="activity_splash_screen_logo_app">100dp</dimen>
+
+    <dimen name="activity_login_logo_app">150dp</dimen>
+    <dimen name="activity_login_logo_padding">24dp</dimen>
+    <dimen name="activity_login_terms_padding">24dp</dimen>
 </resources>
