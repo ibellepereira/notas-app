@@ -185,7 +185,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_groups"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin"
+            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -220,7 +222,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_ranking"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin"
+            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -269,7 +273,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_schedule"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin"
+            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -304,7 +310,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_requests"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin"
+            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
