@@ -23,4 +23,6 @@
     <string name="dashboard_button_requests">Requerimentos</string>
     <string name="dashboard_button_logout">Deslogar</string>
 
+    <string name="dashboard_slider_news_title_1">Exemplo de Notícia 1</string>
+
 </resources>
