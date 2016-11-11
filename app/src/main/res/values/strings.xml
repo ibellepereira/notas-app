@@ -13,9 +13,6 @@
     <string name="logo_app">Logo da Uezo</string>
     <string name="terms_and_conditios">Ao logar você aceita os Termos e Condições do aplicativo, leia com atenção!</string>
 
-
-    <string name="dashboard_button_coming_soon">Em breve</string>
-
     <string name="dashboard_button_news">Notícias</string>
     <string name="dashboard_button_grades">Notas</string>
     <string name="dashboard_button_timetable">Horários</string>
@@ -25,5 +22,7 @@
     <string name="dashboard_button_schedule">Grade</string>
     <string name="dashboard_button_requests">Requerimentos</string>
     <string name="dashboard_button_logout">Deslogar</string>
+
+    <string name="dashboard_slider_news_title_1">Exemplo de Notícia 1</string>
 
 </resources>
