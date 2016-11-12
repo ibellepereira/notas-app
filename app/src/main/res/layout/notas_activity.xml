@@ -12,7 +12,7 @@
         android:id="@+id/listaDisciplinas"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_margin="3dp"
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
@@ -32,12 +32,12 @@
                     android:padding="5dp"
                     android:orientation="vertical"
                     android:background="@color/colorAccent">
-                    <!--talvez adicionar um linear layout e tratar descrição, professor e talvez até horário separadamente-->
+                    
                     <TextView
                         android:id="@+id/disciplina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="10sp"
+                        android:textSize="14sp"
                         android:text="Linguagens Formais e Autômatos"/>
 
                     <LinearLayout
@@ -48,7 +48,7 @@
                             android:id="@+id/curso"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="10sp"
+                            android:textSize="14sp"
                             android:text="Ciência da Computação">
                         </TextView>
                         <View
@@ -64,6 +64,7 @@
                             android:text="CCB10332"/>
                     </LinearLayout>
                 </LinearLayout>
+                
                 <LinearLayout
                     android:id="@+id/listaAvaliacoes"
                     android:layout_width="match_parent"
@@ -91,11 +92,15 @@
                                 android:id="@+id/av1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:textAlignment="center"
-                                android:textSize="32sp"
-                                android:text="8.0"/>
+                                android:textSize="36sp"
+                                android:text="8.9"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -105,12 +110,13 @@
                                 android:paddingRight="8dp"
                                 android:background="@color/reprovado"
                                 android:gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="16sp"
                                 android:text="AV1"/>
+
                         </LinearLayout>
+
                     </android.support.v7.widget.CardView>
                     <!--av1 end-->
-                    
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -131,11 +137,15 @@
                                 android:id="@+id/av1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:textAlignment="center"
-                                android:textSize="32sp"
-                                android:text="8.0"/>
+                                android:textSize="36sp"
+                                android:text="3.1"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -145,12 +155,13 @@
                                 android:paddingRight="8dp"
                                 android:background="@color/reprovado"
                                 android:gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="16sp"
                                 android:text="AV2"/>
+
                         </LinearLayout>
+
                     </android.support.v7.widget.CardView>
                     <!--av2 end-->
-                    
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -171,10 +182,14 @@
                                 android:id="@+id/av1"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
                                 android:gravity="center"
                                 android:textColor="#000000"
                                 android:textAlignment="center"
-                                android:textSize="32sp"
+                                android:textSize="36sp"
                                 android:text="8.0"/>
                             <TextView
                                 android:layout_width="match_parent"
@@ -185,12 +200,13 @@
                                 android:paddingRight="8dp"
                                 android:background="@color/reprovado"
                                 android:gravity="center"
-                                android:textSize="10sp"
+                                android:textSize="16sp"
                                 android:text="AV3"/>
+
                         </LinearLayout>
+
                     </android.support.v7.widget.CardView>
                     <!--av3 end-->
-                    
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -203,35 +219,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="6dp">
-                        <!--<LinearLayout
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">-->
-                        <TextView
-                            android:id="@+id/av1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/reprovado"
-                            android:gravity="center"
-                            android:textAlignment="center"
-                            android:textSize="32sp"
-                            android:text="8.0"/>
-                        <!--<TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:paddingTop = "2dp"
-                            android:paddingBottom= "2dp"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:background="@color/reprovado"
-                            android:gravity="center"
-                            android:textSize="10sp"
-                            android:text="AV1"/>-->
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/av1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:background="@color/reprovado"
+                                android:gravity="center"
+                                android:textAlignment="center"
+                                android:textSize="40sp"
+                                android:text="8.0"/>
+                            <!--<TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingTop = "2dp"
+                                android:paddingBottom= "2dp"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:background="@color/reprovado"
+                                android:gravity="center"
+                                android:textSize="10sp"
+                                android:text="AV1"/>-->
 
-                        <!--</LinearLayout>-->
+                        </LinearLayout>
+
                     </android.support.v7.widget.CardView>
                     <!--media end-->
-                    
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
@@ -242,7 +262,7 @@
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
-        
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>
