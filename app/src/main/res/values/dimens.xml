@@ -31,7 +31,7 @@
     <dimen name="dashboard_button_text_side">14sp</dimen>
 
 
-    <dimen name="dashboard_button_right_margin">35dp</dimen>
+    <dimen name="dashboard_button_right_margin">40dp</dimen>
 
     <dimen name="news_text">56sp</dimen>
 
