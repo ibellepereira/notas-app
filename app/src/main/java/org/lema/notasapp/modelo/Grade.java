@@ -1,7 +1,6 @@
 package org.lema.notasapp.modelo;
 
 import com.bignerdranch.expandablerecyclerview.model.Parent;
-import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.List;
 
