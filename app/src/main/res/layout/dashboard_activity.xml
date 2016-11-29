@@ -13,17 +13,17 @@
         android:layout_height="200dp"
     />
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:columnCount="3"
-        android:columnOrderPreserved="false"
-        android:clipToPadding="false"
-        android:background="@color/backgroundDefaultLight"
-        android:alignmentMode="alignBounds">
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
 
         <LinearLayout
             android:orientation="vertical"
@@ -32,8 +32,7 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_news"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -68,8 +67,7 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_grades"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -104,8 +102,7 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_timetable"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -133,6 +130,20 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
+
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
@@ -140,9 +151,7 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_bus"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            android:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -179,8 +188,7 @@
             android:id="@+id/ll_dashboard_button_groups"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
             tools:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -217,8 +225,7 @@
             android:id="@+id/ll_dashboard_button_ranking"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
             tools:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -246,6 +253,20 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
+
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
@@ -255,8 +276,7 @@
             android:id="@+id/ll_dashboard_button_schedule"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
             tools:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -293,8 +313,7 @@
             android:id="@+id/ll_dashboard_button_requests"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
             tools:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -329,8 +348,7 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_logout"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:layout_marginBottom="@dimen/dashboard_button_icon_vertical_margin">
+            android:layout_marginRight="@dimen/dashboard_button_right_margin">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -358,6 +376,6 @@
 
         </LinearLayout>
 
-    </GridLayout>
+    </LinearLayout>
 
 </LinearLayout>
