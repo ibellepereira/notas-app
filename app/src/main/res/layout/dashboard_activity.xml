@@ -13,17 +13,13 @@
         android:layout_height="200dp"
     />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_height="match_parent"
+        android:isScrollContainer="false"
+        tools:paddingTop="@dimen/activity_vertical_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:addStatesFromChildren="false"
-        android:orientation="horizontal"
-        android:keepScreenOn="false"
-        android:layout_weight="0.01">
+        android:paddingLeft="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:orientation="vertical"
@@ -66,7 +62,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_grades"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -100,7 +98,8 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_timetable"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -127,20 +126,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:addStatesFromChildren="false"
-        android:orientation="horizontal"
-        android:keepScreenOn="false"
-        android:layout_weight="0.01">
-
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
@@ -148,7 +133,10 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_bus"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/ll_dashboard_button_news"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -181,9 +169,11 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_groups"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
             android:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon">
+            android:foreground="@drawable/ic_coming_soon"
+            android:layout_alignTop="@+id/ll_dashboard_button_bus"
+            android:layout_alignLeft="@+id/ll_dashboard_button_timetable"
+            android:layout_alignStart="@+id/ll_dashboard_button_timetable">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -216,9 +206,11 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_ranking"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
             android:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon">
+            android:foreground="@drawable/ic_coming_soon"
+            android:layout_alignTop="@+id/ll_dashboard_button_groups"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -230,7 +222,7 @@
                 android:background="@drawable/ic_star_white_24dp"></LinearLayout>
 
             <TextView
-                
+
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
                 android:textColor="@color/colorTextInteractiveLight"
@@ -246,29 +238,18 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:addStatesFromChildren="false"
-        android:orientation="horizontal"
-        android:keepScreenOn="false"
-        android:layout_weight="0.01">
-
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_schedule"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
             android:background="@drawable/btn_dashboard_coming_soon"
-            android:foreground="@drawable/ic_coming_soon">
+            android:foreground="@drawable/ic_coming_soon"
+            android:layout_below="@+id/ll_dashboard_button_bus"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -302,8 +283,10 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_requests"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            android:foreground="@drawable/ic_coming_soon">
+            android:foreground="@drawable/ic_coming_soon"
+            android:layout_alignTop="@+id/ll_dashboard_button_schedule"
+            android:layout_alignLeft="@+id/ll_dashboard_button_groups"
+            android:layout_alignStart="@+id/ll_dashboard_button_groups">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -337,7 +320,9 @@
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_logout"
-            android:layout_marginRight="@dimen/dashboard_button_right_margin">
+            android:layout_alignTop="@+id/ll_dashboard_button_requests"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -363,6 +348,47 @@
                 android:hyphenationFrequency="none" />
 
         </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/background_light"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:addStatesFromChildren="false"
+        android:orientation="horizontal"
+        android:keepScreenOn="false"
+        android:layout_weight="0.01">
 
     </LinearLayout>
 
