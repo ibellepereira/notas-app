@@ -1,6 +1,8 @@
 package org.lema.notasapp.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -44,20 +46,24 @@ public class LoginActivity extends AccessTokenActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        mMatricula = (EditText) findViewById(R.id.ed_matricula);
-        mTermosCondicoes = (TextView) findViewById(R.id.tv_login_termos);
+        preencheReferencias();
+        loginButtonOnClick();
 
-        mSenha = (EditText) findViewById(R.id.ed_senha);
-        mSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mSenha.setText("");
-            }
-        });
+        carregarPreferencias();
 
-        mEntrarAutomaticamente = new CheckBox(this);
+        preparaTermosECondicoesLink();
 
-        mLoginButton = (Button) findViewById(R.id.btn_login);
+    }
+
+    private void carregarPreferencias() {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        mMatricula.setText(sharedPreferences.getString(getString(R.string.preference_matricula), ""));
+        mSenha.setText(sharedPreferences.getString(getString(R.string.preference_password), ""));
+        mEntrarAutomaticamente.setChecked(sharedPreferences.getBoolean(getString(R.string.preference_save), false));
+    }
+
+    private void loginButtonOnClick() {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,9 +78,14 @@ public class LoginActivity extends AccessTokenActivity {
                 }
             }
         });
+    }
 
-        preparaTermosECondicoesLink();
-
+    private void preencheReferencias(){
+        mMatricula = (EditText) findViewById(R.id.ed_matricula);
+        mTermosCondicoes = (TextView) findViewById(R.id.tv_login_termos);
+        mSenha = (EditText) findViewById(R.id.ed_senha);
+        mLoginButton = (Button) findViewById(R.id.btn_login);
+        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.save_password);
     }
 
     private void preparaTermosECondicoesLink() {
@@ -104,30 +115,9 @@ public class LoginActivity extends AccessTokenActivity {
         OAuth2.setProperties(oauth2Properties);
     }
 
-    @Override
-    public void onReceiveAccessToken(AccessToken accessToken) {
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Aluno aluno = new AlunoDao(this).getAluno();
-
-        if(aluno != null) {
-            populaFormulario(aluno);
-        }
-    }
-
     private void populaFormulario(Aluno aluno) {
         mMatricula.setText(aluno.getMatricula());
         mSenha.setText(aluno.getSenha());
-    }
-
-    public void onRestart() {
-        super.onRestart();
-        limparDados();
     }
 
     private boolean entrarAutomaticamente() {
@@ -163,5 +153,47 @@ public class LoginActivity extends AccessTokenActivity {
         return ehValido;
 
     }
+
+    @Override
+    public void onReceiveAccessToken(AccessToken accessToken) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Aluno aluno = new AlunoDao(this).getAluno();
+
+        if(aluno != null) {
+            populaFormulario(aluno);
+        }
+    }
+
+    public void onRestart() {
+        super.onRestart();
+        limparDados();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sp = getSharedPreferences(getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        if(entrarAutomaticamente()) {
+            editor.putString(getString(R.string.preference_matricula), mMatricula.getText().toString());
+            editor.putString(getString(R.string.preference_password), mSenha.getText().toString());
+            editor.putBoolean(getString(R.string.preference_save), entrarAutomaticamente());
+            editor.commit();
+        } else {
+            editor.clear();
+            editor.commit();
+        }
+
+    }
+
+
 
 }
