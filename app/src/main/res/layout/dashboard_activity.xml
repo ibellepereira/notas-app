@@ -40,18 +40,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_local_library_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_news"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_news"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_news"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -75,18 +74,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_done_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_grades"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_grades"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_grades"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -110,18 +108,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_alarm_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_timetable"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_timetable"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_timetable"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -159,18 +156,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_directions_bus_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_bus"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_bus"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_bus"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_bus"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -182,12 +178,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
-            android:background="@drawable/btn_dashboard"
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_groups"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:background="@drawable/btn_dashboard_coming_soon"
             android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
@@ -196,18 +191,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_group_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_groups"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_groups"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_groups"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -219,12 +213,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
-            android:background="@drawable/btn_dashboard"
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_ranking"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:background="@drawable/btn_dashboard_coming_soon"
             android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
@@ -233,18 +226,18 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_star_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
+                
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_ranking"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_ranking"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_ranking"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -270,12 +263,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
-            android:background="@drawable/btn_dashboard"
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_schedule"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:background="@drawable/btn_dashboard_coming_soon"
+            android:background="@drawable/btn_dashboard_coming_soon"
             android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
@@ -284,18 +276,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_school_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_schedule"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_schedule"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_schedule"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -307,12 +298,11 @@
         <LinearLayout
             android:orientation="vertical"
             android:elevation="0dp"
-            android:background="@drawable/btn_dashboard"
+            android:background="@drawable/btn_dashboard_coming_soon"
             android:layout_height="@dimen/dashboard_button_side"
             android:layout_width="@dimen/dashboard_button_side"
             android:id="@+id/ll_dashboard_button_requests"
             android:layout_marginRight="@dimen/dashboard_button_right_margin"
-            tools:background="@drawable/btn_dashboard_coming_soon"
             android:foreground="@drawable/ic_coming_soon">
 
             <LinearLayout
@@ -321,18 +311,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_content_paste_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_requests"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_requests"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_requests"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
@@ -356,18 +345,17 @@
                 android:layout_height="@dimen/dashboard_button_icon_side"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/dashboard_button_icon_horizontal_margin"
-                tools:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
+                android:layout_marginTop="@dimen/dashboard_button_icon_vertical_margin"
                 android:background="@drawable/ic_exit_to_app_white_24dp"></LinearLayout>
 
             <TextView
-                android:text="@string/dashboard_button_news"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/dashboard_button_text_side"
-                tools:textColor="@color/colorTextInteractiveLight"
+                android:textColor="@color/colorTextInteractiveLight"
                 android:layout_width="match_parent"
                 android:id="@+id/tv_button_logout"
-                tools:padding="@dimen/dashboard_button_text_padding"
-                tools:text="@string/dashboard_button_logout"
+                android:padding="@dimen/dashboard_button_text_padding"
+                android:text="@string/dashboard_button_logout"
                 android:textAlignment="center"
                 android:allowUndo="false"
                 android:textStyle="normal|bold"
