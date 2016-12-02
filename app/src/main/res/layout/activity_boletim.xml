@@ -7,9 +7,8 @@
 
     <include android:id="@+id/bar" layout="@layout/toolbar_default" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_materias"
-        android:drawSelectorOnTop="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
