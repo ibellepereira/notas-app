@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 public class BoletimActivity extends OAuthActivity {
 
     private RecyclerView recyclerViewBoletim;
+    private Toolbar mToolbar;
     private ArrayList<Materia> materias;
     private Aluno aluno;
 
@@ -37,6 +39,8 @@ public class BoletimActivity extends OAuthActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boletim);
+
+        preparaToolbar();
 
         carregarPreferencias();
 
@@ -46,6 +50,15 @@ public class BoletimActivity extends OAuthActivity {
 
 
     }
+
+    private void preparaToolbar(){
+        mToolbar = (Toolbar) findViewById(R.id.toolbar_boletim);
+        mToolbar.setTitle(R.string.activity_boletim_name);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
     private void carregarPreferencias() {
 
         SharedPreferences sharedPreferences = getSharedPreferences(
