@@ -10,11 +10,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name="android.support.multidex.MultiDexApplication"
+        android:name=".infra.app.NotasAppAplication"
         android:theme="@style/AppTheme">
         <activity
             android:configChanges="orientation|screenSize"
-            android:name=".activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:configChanges="orientation|screenSize" android:name=".activity.BoletimActivity" />
+        <activity android:configChanges="orientation|screenSize" android:name=".ui.activity.BoletimActivity" />
 
     </application>
 
