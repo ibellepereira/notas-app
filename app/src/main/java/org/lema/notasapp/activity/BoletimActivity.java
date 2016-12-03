@@ -142,7 +142,7 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     private void preparaHamburguerIcone(Drawer result) {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
     }
 
