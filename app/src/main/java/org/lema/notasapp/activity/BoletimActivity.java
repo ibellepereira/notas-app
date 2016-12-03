@@ -7,6 +7,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+
+import com.mikepenz.materialdrawer.AccountHeader;
+import com.mikepenz.materialdrawer.AccountHeaderBuilder;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.DrawerBuilder;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
@@ -45,6 +56,8 @@ public class BoletimActivity extends OAuthActivity {
         carregarPreferencias();
 
         preencheReferencias();
+
+        preparaNavigationDrawer();
 
         buscaBoletim();
 
@@ -92,6 +105,45 @@ public class BoletimActivity extends OAuthActivity {
         recyclerViewBoletim.setAdapter(new BoletimAdapter(this, materias));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewBoletim.setLayoutManager(layoutManager);
+    }
+
+    private void preparaNavigationDrawer() {
+        PrimaryDrawerItem boletim = new PrimaryDrawerItem().withName("Boletim");
+        SecondaryDrawerItem meuPerfil = new SecondaryDrawerItem().withName("Meu Perfil").withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+            @Override
+            public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
+//                Intent irParaPerfil = new Intent(activity, PerfilActivity.class);
+//                startActivity(irParaPerfil);
+                return false;
+            }
+        });
+        SecondaryDrawerItem meusRankings = new SecondaryDrawerItem().withName("Meus Rankings");
+
+        IProfile perfil = new ProfileDrawerItem()
+                .withEmail("1413331050")
+                .withName("Leonardo Cordeiro")
+                .withIcon(R.drawable.ic_sem_foto);
+
+        AccountHeader headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.color.colorPrimary)
+                .addProfiles(perfil)
+                .build();
+
+        Drawer result = new DrawerBuilder()
+                .withActivity(this)
+                .withTranslucentStatusBar(true)
+                .withToolbar(mToolbar)
+                .withAccountHeader(headerResult)
+                .addDrawerItems(boletim, meuPerfil, meusRankings)
+                .build();
+
+        preparaHamburguerIcone(result);
+    }
+
+    private void preparaHamburguerIcone(Drawer result) {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        result.getActionBarDrawerToggle().setDrawerIndicatorEnabled(true);
     }
 
     @Override

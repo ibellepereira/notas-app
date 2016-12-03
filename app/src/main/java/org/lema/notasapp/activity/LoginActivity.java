@@ -18,6 +18,7 @@ import android.widget.TextView;
 import org.lema.notasapp.R;
 import org.lema.notasapp.dao.AlunoDao;
 import org.lema.notasapp.modelo.Aluno;
+import org.lema.notasapp.modelo.Boletim;
 
 import java.util.Properties;
 
@@ -125,7 +126,7 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void login(Aluno aluno) {
-        Intent irParaBoletim = new Intent(this, BoletimActivity.class);
+        Intent irParaBoletim = new Intent(this, DashboardActivity.class);
         irParaBoletim.putExtra("aluno", aluno);
         irParaBoletim.putExtra("entrar-automaticamente", entrarAutomaticamente());
 
