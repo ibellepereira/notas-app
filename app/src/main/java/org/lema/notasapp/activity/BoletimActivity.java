@@ -108,8 +108,8 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     private void preparaNavigationDrawer() {
-        PrimaryDrawerItem boletim = new PrimaryDrawerItem().withName("Boletim");
-        SecondaryDrawerItem meuPerfil = new SecondaryDrawerItem().withName("Meu Perfil").withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+        PrimaryDrawerItem notas = new PrimaryDrawerItem().withName(getString(R.string.dashboard_button_grades));
+        SecondaryDrawerItem horarios = new SecondaryDrawerItem().withName(getString(R.string.dashboard_button_schedule)).withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
             @Override
             public boolean onItemClick(View view, int i, IDrawerItem iDrawerItem) {
 //                Intent irParaPerfil = new Intent(activity, PerfilActivity.class);
@@ -117,16 +117,18 @@ public class BoletimActivity extends OAuthActivity {
                 return false;
             }
         });
-        SecondaryDrawerItem meusRankings = new SecondaryDrawerItem().withName("Meus Rankings");
+        SecondaryDrawerItem noticias = new SecondaryDrawerItem().withName(getString(R.string.dashboard_button_news));
+        SecondaryDrawerItem uezoBus = new SecondaryDrawerItem().withName(getString(R.string.dashboard_button_bus));
+        SecondaryDrawerItem logout = new SecondaryDrawerItem().withName(getString(R.string.dashboard_button_logout));
 
         IProfile perfil = new ProfileDrawerItem()
-                .withEmail("1413331050")
+                .withEmail(aluno.getMatricula())
                 .withName("Leonardo Cordeiro")
                 .withIcon(R.drawable.ic_sem_foto);
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.color.colorPrimary)
+                .withHeaderBackground(R.color.colorPrimaryDark)
                 .addProfiles(perfil)
                 .build();
 
@@ -135,7 +137,7 @@ public class BoletimActivity extends OAuthActivity {
                 .withTranslucentStatusBar(true)
                 .withToolbar(mToolbar)
                 .withAccountHeader(headerResult)
-                .addDrawerItems(boletim, meuPerfil, meusRankings)
+                .addDrawerItems(notas, noticias, uezoBus, logout)
                 .build();
 
         preparaHamburguerIcone(result);

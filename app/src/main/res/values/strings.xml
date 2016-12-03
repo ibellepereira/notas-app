@@ -33,4 +33,5 @@
 
     <string name="activity_horario_name">Horários</string>
     <string name="activity_boletim_name">Boletim</string>
+    <string name="activity_dashboard_name">Dashboard</string>
 </resources>
