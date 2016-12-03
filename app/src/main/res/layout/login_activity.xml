@@ -1,84 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:fillViewport="true">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/lobby_gradient"
+    android:paddingTop="@dimen/activity_login_logo_padding"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp">
 
-    <!--<include
-        android:id="@+id/bar"
-        layout="@layout/toolbar_default" />-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/activity_login_logo_app"
+        app:srcCompat="@drawable/logo_branca"
+        android:id="@+id/iv_login_logo_app"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
-    <LinearLayout
+    <android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:theme="@style/TextLabel">
+    <EditText
+        android:id="@+id/ed_matricula"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="56dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_margin="10dp"
+        android:hint="@string/login_code"
+        android:inputType="numberSigned"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:textColor="@color/colorTextInputsLogin"
+        android:textColorHint="@color/colorTextPlaceholder"
+        />
+</android.support.design.widget.TextInputLayout>
+<android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:theme="@style/TextLabel">
+    <EditText
+        android:id="@+id/ed_senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:ellipsize="start"
+        android:gravity="center"
+        android:textColor="@color/colorTextInputsLogin"
+        android:textColorHint="@color/colorTextPlaceholder" />
+</android.support.design.widget.TextInputLayout>
 
+    <android.support.v7.widget.AppCompatCheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_password"
+        android:id="@+id/save_password"/>
+
+<android.support.v7.widget.AppCompatButton
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/btn_login"
+    android:layout_marginTop="24dp"
+    android:layout_marginBottom="24dp"
+    android:elevation="5dp"
+    android:translationZ="5dp"
+    android:padding="12dp"
+    android:background="@color/colorSecundary"
+    android:text="@string/login"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:text="@string/app_name"
-            android:textSize="20pt"
-            android:fontFamily="sans-serif-light"
-            android:textAlignment="center"
-            android:textColor="@color/common_signin_btn_light_text_pressed"/>
+            android:id="@+id/tv_login_termos"
+            android:clickable="true"
+            android:gravity="bottom|center"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="@dimen/activity_login_terms_padding"
+            />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:theme="@style/TextLabel">
-            <EditText
-                android:id="@+id/ed_matricula"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/login_code"
-                android:inputType="numberSigned"
-                android:textColor="@color/loginContent"
-                android:textColorHint="@color/colorTextPlaceholder"/>
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:theme="@style/TextLabel">
-            <EditText
-                android:id="@+id/ed_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:textColor="@color/loginContent"
-                android:textColorHint="@color/colorTextPlaceholder" />
-        </android.support.design.widget.TextInputLayout>
-        <CheckBox
-            android:id="@+id/cb_entrar_automaticamente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:buttonTint="@color/backgroundDefault"
-            android:text="@string/login_automatically"
-            android:textColor="@color/backgroundDefault" />
+    </RelativeLayout>
 
-        <android.support.v7.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_login"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="12dp"
-            android:background="@color/loginButton"
-            android:text="@string/login"/>
-    </LinearLayout>
+
+</LinearLayout>
 </ScrollView>

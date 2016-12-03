@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import org.lema.notasapp.R;
+import org.lema.notasapp.modelo.Boletim;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

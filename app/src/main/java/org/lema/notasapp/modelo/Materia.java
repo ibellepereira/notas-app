@@ -16,9 +16,15 @@ public class Materia implements Parcelable {
     private Double media;
     private String ano;
     private StatusDeAprovacao aprovacao;
+    private String professor;
 
     public Materia() {
 
+    }
+
+    public Materia(String nome, String professor) {
+        this.nome = nome;
+        this.professor = professor;
     }
 
     public Materia(String nome, Double av1, Double av2, Double av3, Double media) {
@@ -46,6 +52,14 @@ public class Materia implements Parcelable {
             return new Materia[size];
         }
     };
+
+    public String getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(String professor) {
+        this.professor = professor;
+    }
 
     public String getNome() {
         return nome;

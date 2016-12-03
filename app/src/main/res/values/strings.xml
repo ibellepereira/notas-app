@@ -2,13 +2,36 @@
     <string name="app_name">UezoApp</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string name="preference_user_key">Preferences</string>
+    <string name="preference_matricula">PrefMatricula</string>
+    <string name="preference_password">PrefPassword</string>
+    <string name="preference_save">PrefSave</string>
+
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="login_code">Matrícula</string>
     <string name="password">Senha</string>
     <string name="login_automatically">Entrar automaticamente</string>
-    <string name="login">Login</string>
+    <string name="save_password">Salvar senha</string>
+    <string name="login">Logar</string>
     <string name="logo_uezo">Logo da Uezo</string>
     <string name="logo_app">Logo da Uezo</string>
+    <string name="terms_and_conditios">Ao logar você aceita os Termos e Condições do aplicativo, leia com atenção!</string>
+
+    <string name="dashboard_button_news">Notícias</string>
+    <string name="dashboard_button_grades">Notas</string>
+    <string name="dashboard_button_timetable">Horários</string>
+    <string name="dashboard_button_bus">Uezobus</string>
+    <string name="dashboard_button_groups">Grupos</string>
+    <string name="dashboard_button_ranking">Ranking</string>
+    <string name="dashboard_button_schedule">Grade</string>
+    <string name="dashboard_button_requests">Requerimentos</string>
+    <string name="dashboard_button_logout">Deslogar</string>
+
+    <string name="dashboard_slider_news_title_1">Exemplo de Notícia 1</string>
+
+    <string name="activity_horario_name">Horários</string>
+    <string name="activity_boletim_name">Boletim</string>
+    <string name="activity_dashboard_name">Dashboard</string>
 </resources>

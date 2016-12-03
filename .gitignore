@@ -1,8 +1,18 @@
+#Para saber mais .gitignore 
+#	https://git-scm.com/docs/gitignore
+
+#Exemplo do .gitignore visual studio 
+#	https://github.com/github/gitignore/blob/master/Android.gitignore
+
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
+
+
 .DS_Store
 /build
-.idea
-.iml
+
+#todos os arquivos dentro do diretótio .idea
+.idea/
+
+#todos os arquivos termiados com .iml
+*.iml
