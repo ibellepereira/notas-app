@@ -14,4 +14,9 @@
     <color name="sem_nota">#DDD</color>
     <color name="esperando_av3">#FBC02D</color>
 
+    <color name="loginContent">#DDD</color>
+    <color name="loginButton">#FF5252</color>
+
+    <color name="endColorGradient">#6E3869</color>
+    <color name="startColorGradient">#06619C</color>
 </resources>

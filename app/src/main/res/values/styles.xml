@@ -6,4 +6,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextLabel">
+        <item name="android:textColorHint">@color/loginContent</item>
+        <item name="android:textSize">20sp</item>
+
+        <item name="colorAccent">@color/loginContent</item>
+        <item name="colorControlNormal">@color/loginContent</item>
+        <item name="colorControlActivated">@color/loginContent</item>
+    </style>
+
 </resources>

@@ -17,11 +17,11 @@ public class NotasAppAplication extends Application {
     private BoletimComponent comp;
 
     // Multidex support
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        MultiDex.install(this);
-    }
+//    @Override
+//    protected void attachBaseContext(Context base) {
+//        super.attachBaseContext(base);
+//        MultiDex.install(this);
+//    }
 
     @Override
     public void onCreate() {

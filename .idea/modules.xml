@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/NotasApp.iml" filepath="$PROJECT_DIR$/NotasApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mythomobi/mythomobi.iml" filepath="$PROJECT_DIR$/mythomobi/mythomobi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NotasApp.iml" filepath="$PROJECT_DIR$/.idea/modules/NotasApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mythomobi/mythomobi.iml" filepath="$PROJECT_DIR$/.idea/modules/mythomobi/mythomobi.iml" />
     </modules>
   </component>
 </project>

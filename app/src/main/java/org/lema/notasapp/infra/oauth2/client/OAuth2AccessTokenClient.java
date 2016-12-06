@@ -8,6 +8,7 @@ import org.lema.notasapp.infra.oauth2.OAuth2;
 import org.lema.notasapp.infra.oauth2.model.AccessToken;
 import org.lema.notasapp.infra.oauth2.repository.AccessTokenRepository;
 import org.lema.notasapp.infra.oauth2.service.OAuth2AccessTokenService;
+import org.lema.notasapp.infra.retrofit.callback.OAuthCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -36,27 +37,36 @@ public class OAuth2AccessTokenClient {
             final OAuth2AccessTokenService oAuth2AccessTokenService = new OAuth2AccessTokenService.Builder().build();
 
             oAuth2AccessTokenService.getAccessToken(properties.getProperty(OAuth2.SCOPE))
-                    .enqueue(new Callback<AccessToken>() {
+                    .enqueue(new OAuthCallback<AccessToken>() {
                         @Override
-                        public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
-                            if(response.isSuccessful()) {
-                                AccessToken accessToken = response.body();
+                        public void handle(Call<AccessToken> call, Response<AccessToken> response) {
+                            AccessToken accessToken = response.body();
 
-                                Log.i("oauth2", "succeful accestoken");
-
-                                tokenRepository.save(accessToken);
-                                EventBus.getDefault().post(accessToken);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<AccessToken> call, Throwable t) {
-                            Log.i("oauth2", "not succeful accestoken " + t.toString());
-                            if (t instanceof UnknownHostException) {
-                                EventBus.getDefault().post(new NoConnectionException());
-                            }
+                            tokenRepository.save(accessToken);
+                            EventBus.getDefault().post(accessToken);
                         }
                     });
+//                    .enqueue(new Callback<AccessToken>() {
+//                        @Override
+//                        public void onResponse(Call<AccessToken> call, Response<AccessToken> response) {
+//                            if(response.isSuccessful()) {
+//                                AccessToken accessToken = response.body();
+//
+//                                Log.i("oauth2", "succeful accestoken");
+//
+//                                tokenRepository.save(accessToken);
+//                                EventBus.getDefault().post(accessToken);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<AccessToken> call, Throwable t) {
+//                            Log.i("oauth2", "not succeful accestoken " + t.toString());
+//                            if (t instanceof UnknownHostException) {
+//                                EventBus.getDefault().post(new NoConnectionException());
+//                            }
+//                        }
+//                    });
 
         } else {
             EventBus.getDefault().post(new AccessToken());
