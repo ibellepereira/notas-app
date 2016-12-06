@@ -1,11 +1,19 @@
 package org.lema.notasapp.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.dao.AlunoDao;
@@ -27,6 +35,7 @@ public class LoginActivity extends AccessTokenActivity {
     private EditText mSenha;
 
     private CheckBox mEntrarAutomaticamente;
+    private TextView mTermosCondicoes;
 
     private Aluno aluno;
 
@@ -36,19 +45,24 @@ public class LoginActivity extends AccessTokenActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        mMatricula = (EditText) findViewById(R.id.ed_matricula);
+        preencheReferencias();
+        loginButtonOnClick();
 
-        mSenha = (EditText) findViewById(R.id.ed_senha);
-        mSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mSenha.setText("");
-            }
-        });
+        carregarPreferencias();
 
-        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.cb_entrar_automaticamente);
+        preparaTermosECondicoesLink();
 
-        mLoginButton = (Button) findViewById(R.id.btn_login);
+    }
+
+    private void carregarPreferencias() {
+        SharedPreferences sharedPreferences = getSharedPreferences(
+                getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        mMatricula.setText(sharedPreferences.getString(getString(R.string.preference_matricula), ""));
+        mSenha.setText(sharedPreferences.getString(getString(R.string.preference_password), ""));
+        mEntrarAutomaticamente.setChecked(sharedPreferences.getBoolean(getString(R.string.preference_save), false));
+    }
+
+    private void loginButtonOnClick() {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,25 +77,32 @@ public class LoginActivity extends AccessTokenActivity {
                 }
             }
         });
+    }
+
+    private void preencheReferencias(){
+        mMatricula = (EditText) findViewById(R.id.ed_matricula);
+        mTermosCondicoes = (TextView) findViewById(R.id.tv_login_termos);
+        mSenha = (EditText) findViewById(R.id.ed_senha);
+        mLoginButton = (Button) findViewById(R.id.btn_login);
+        mEntrarAutomaticamente = (CheckBox) findViewById(R.id.save_password);
+    }
+
+    private void preparaTermosECondicoesLink() {
+        SpannableString spannedString = new SpannableString(getResources().getString(R.string.terms_and_conditios));
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, TermosCondicoesActivity.class);
+                startActivity(intent);
+            }
+        };
+        spannedString.setSpan(clickableSpan, 24, 42, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTermosCondicoes.setText(spannedString);
+        mTermosCondicoes.setMovementMethod(LinkMovementMethod.getInstance());
+        mTermosCondicoes.setHighlightColor(ContextCompat.getColor(this, R.color.colorAccent));
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        Aluno aluno = new AlunoDao(this).getAluno();
-
-        if(aluno != null) {
-            populaFormulario(aluno);
-        }
-    }
-
-    @Override
-    public void onRestart() {
-        super.onRestart();
-        limparDados();
-    }
 
     private void prepateOAuth2Properties() {
         Properties oauth2Properties = new Properties();
@@ -109,7 +130,7 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void login(Aluno aluno) {
-        Intent irParaBoletim = new Intent(this, BoletimActivity.class);
+        Intent irParaBoletim = new Intent(this, DashboardActivity.class);
         irParaBoletim.putExtra("aluno", aluno);
         irParaBoletim.putExtra("entrar-automaticamente", entrarAutomaticamente());
 
@@ -137,5 +158,42 @@ public class LoginActivity extends AccessTokenActivity {
         return ehValido;
 
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Aluno aluno = new AlunoDao(this).getAluno();
+
+        if(aluno != null) {
+            populaFormulario(aluno);
+        }
+    }
+
+    public void onRestart() {
+        super.onRestart();
+        limparDados();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sp = getSharedPreferences(getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        if(entrarAutomaticamente()) {
+            editor.putString(getString(R.string.preference_matricula), mMatricula.getText().toString());
+            editor.putString(getString(R.string.preference_password), mSenha.getText().toString());
+            editor.putBoolean(getString(R.string.preference_save), entrarAutomaticamente());
+            editor.commit();
+        } else {
+            editor.clear();
+            editor.commit();
+        }
+
+    }
+
+
 
 }

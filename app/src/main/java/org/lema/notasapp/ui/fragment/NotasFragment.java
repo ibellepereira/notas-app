@@ -41,7 +41,7 @@ public class NotasFragment extends RenderableFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        this.fragment = inflater.inflate(R.layout.notas_fragment, null);
+//        this.fragment = inflater.inflate(R.layout.notas_fragment, null);
 
         this.activity = (BoletimActivity) getActivity();
 
@@ -104,7 +104,7 @@ public class NotasFragment extends RenderableFragment {
     @Override
     public void render(FragmentActivity activity) {
         FragmentTransaction tx = activity.getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.boletim, this);
+//        tx.replace(R.id.boletim, this);
         tx.commit();
     }
 }

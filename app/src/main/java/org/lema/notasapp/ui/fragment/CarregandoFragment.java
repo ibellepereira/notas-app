@@ -21,8 +21,8 @@ public class CarregandoFragment extends RenderableFragment {
     }
 
     public void render(FragmentActivity activity) {
-        FragmentTransaction tx = activity.getSupportFragmentManager().beginTransaction();
-        tx.replace(R.id.boletim, this);
-        tx.commit();
+//        FragmentTransaction tx = activity.getSupportFragmentManager().beginTransaction();
+//        tx.replace(R.id.boletim, this);
+//        tx.commit();
     }
 }

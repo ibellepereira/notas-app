@@ -4,9 +4,16 @@
     tools:context=".ui.activity.BoletimActivity">
 
     <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_action_refresh"
+        android:title="Refresh"/>
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+        android:icon="@drawable/abc_ic_menu_overflow_material"
         android:title="Mais informações"
         app:showAsAction="ifRoom">
 
