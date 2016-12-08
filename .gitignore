@@ -13,6 +13,7 @@
 
 #todos os arquivos dentro do diretótio .idea
 .idea/
+.idea
 
 #todos os arquivos termiados com .iml
 *.iml
