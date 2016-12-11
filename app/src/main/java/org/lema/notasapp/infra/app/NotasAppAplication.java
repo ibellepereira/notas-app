@@ -1,8 +1,6 @@
 package org.lema.notasapp.infra.app;
 
 import android.app.Application;
-import android.content.Context;
-import android.support.multidex.MultiDex;
 
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
 import org.lema.notasapp.infra.dagger.component.DaggerBoletimComponent;
