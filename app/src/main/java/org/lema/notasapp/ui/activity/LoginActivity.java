@@ -38,6 +38,7 @@ public class LoginActivity extends AccessTokenActivity {
     private TextView mTermosCondicoes;
 
     private Aluno aluno;
+    private AlunoDao alunoDao = new AlunoDao(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +49,19 @@ public class LoginActivity extends AccessTokenActivity {
         preencheReferencias();
         loginButtonOnClick();
 
-        carregarPreferencias();
 
         preparaTermosECondicoesLink();
 
     }
 
     private void carregarPreferencias() {
-        SharedPreferences sharedPreferences = getSharedPreferences(
-                getString(R.string.preference_user_key), Context.MODE_PRIVATE);
-        mMatricula.setText(sharedPreferences.getString(getString(R.string.preference_matricula), ""));
-        mSenha.setText(sharedPreferences.getString(getString(R.string.preference_password), ""));
-        mEntrarAutomaticamente.setChecked(sharedPreferences.getBoolean(getString(R.string.preference_save), false));
+        Aluno aluno = alunoDao.getAlunoLogado();
+        boolean entrarAutomaticamente = alunoDao.entrarAutomaticamente();
+
+        if(aluno != null && entrarAutomaticamente) {
+            populaFormulario(aluno);
+            mEntrarAutomaticamente.setChecked(alunoDao.entrarAutomaticamente());
+        }
     }
 
     private void loginButtonOnClick() {
@@ -130,9 +132,9 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void login(Aluno aluno) {
-        Intent irParaBoletim = new Intent(this, DashboardActivity.class);
-        irParaBoletim.putExtra("aluno", aluno);
-        irParaBoletim.putExtra("entrar-automaticamente", entrarAutomaticamente());
+        alunoDao.setAlunoLogado(aluno, entrarAutomaticamente());
+
+        Intent irParaBoletim = new Intent(this, BoletimActivity.class);
 
         startActivity(irParaBoletim);
     }
@@ -159,41 +161,17 @@ public class LoginActivity extends AccessTokenActivity {
 
     }
 
+
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
 
-        Aluno aluno = new AlunoDao(this).getAluno();
-
-        if(aluno != null) {
-            populaFormulario(aluno);
-        }
+        carregarPreferencias();
     }
 
     public void onRestart() {
         super.onRestart();
         limparDados();
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        SharedPreferences sp = getSharedPreferences(getString(R.string.preference_user_key), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sp.edit();
-
-        if(entrarAutomaticamente()) {
-            editor.putString(getString(R.string.preference_matricula), mMatricula.getText().toString());
-            editor.putString(getString(R.string.preference_password), mSenha.getText().toString());
-            editor.putBoolean(getString(R.string.preference_save), entrarAutomaticamente());
-            editor.commit();
-        } else {
-            editor.clear();
-            editor.commit();
-        }
-
-    }
-
-
 
 }
