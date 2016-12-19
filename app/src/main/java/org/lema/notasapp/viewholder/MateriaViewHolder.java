@@ -41,6 +41,6 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
         media.setText(String.valueOf(materia.getMedia()));
         nomeMateria.setText(String.valueOf(materia.getNome()));
         periodoMateria.setText(materia.getAno());
-        curso.setText("Ciencia da Computacao");
+        ///curso.setText("Ciencia da Computacao");
     }
 }
