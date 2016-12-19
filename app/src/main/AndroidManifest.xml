@@ -27,8 +27,6 @@
                 android:configChanges="orientation|screenSize"/>
         <activity android:name=".ui.activity.LoginActivity"/>
         <activity android:name=".ui.activity.TermosCondicoesActivity" />
-        <activity android:name=".ui.activity.HorariosActivity" />
-        <activity android:name=".ui.activity.DashboardActivity" />
     </application>
 
 </manifest>
