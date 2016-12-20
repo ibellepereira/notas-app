@@ -31,6 +31,7 @@ import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.model.Aluno;
 import org.lema.notasapp.domain.model.Materia;
 import org.lema.notasapp.domain.service.BoletimService;
+import org.lema.notasapp.fragment.LoadingFragment;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
 import org.lema.notasapp.infra.event.BoletimEvent;
@@ -54,6 +55,10 @@ public class BoletimActivity extends OAuthActivity {
     private AlunoDao alunoDao = new AlunoDao(this);
     private Handler handler = new Handler();
 
+
+    private static String LOADING_FRAGMENT_TAG = "carregando";
+    private LoadingFragment loadingFragment;
+
     @Inject
     BoletimService boletimService;
 
@@ -61,6 +66,8 @@ public class BoletimActivity extends OAuthActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boletim);
+
+        mostrarCarregando();
 
         preparaToolbar();
 
@@ -96,9 +103,9 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     public void buscaBoletim() {
-        mProgressBar = new ProgressDialog(this);
-        mProgressBar.setMessage("Buscando notas...");
-        mProgressBar.show();
+        //mProgressBar = new ProgressDialog(this);
+        //mProgressBar.setMessage("Buscando notas...");
+        //mProgressBar.show();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -115,8 +122,18 @@ public class BoletimActivity extends OAuthActivity {
 
     }
 
+    public void mostrarCarregando() {
+        loadingFragment = new LoadingFragment();
+        getFragmentManager().beginTransaction().add(android.R.id.content, loadingFragment, LOADING_FRAGMENT_TAG).commit();
+    }
+
+    public void ocultarCarregando() {
+        getFragmentManager().beginTransaction().remove(loadingFragment).commit();
+    }
+
     @Subscribe
     public void preencheLista(BoletimEvent event) {
+        ocultarCarregando();
 
         materias = (ArrayList<Materia>) event.boletim.getMaterias();
 
