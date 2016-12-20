@@ -48,7 +48,7 @@ public class NotasFragment extends RenderableFragment {
         preparaToolBar();
         preparaNavigationDrawer();
 
-        this.materias = getArguments().getParcelableArrayList("materias");
+//        this.materias = getArguments().getParcelableArrayList("materias");
 
         ListView listView = (ListView) fragment.findViewById(R.id.lv_materias);
         listView.setAdapter(new MateriasAdapter(activity, materias));

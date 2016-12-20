@@ -3,11 +3,13 @@ package org.lema.notasapp.domain.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Created by leonardocordeiro on 18/07/15.
  */
 
-public class Materia implements Parcelable {
+public class Materia implements Serializable{
 
     private String nome;
     private Double notaDaAv1;
@@ -17,6 +19,7 @@ public class Materia implements Parcelable {
     private String ano;
     private StatusDeAprovacao aprovacao;
     private String professor;
+    private String codigo;
 
     public Materia() {
 
@@ -41,17 +44,6 @@ public class Materia implements Parcelable {
         ano = in.readString();
     }
 
-    public static final Creator<Materia> CREATOR = new Creator<Materia>() {
-        @Override
-        public Materia createFromParcel(Parcel in) {
-            return new Materia(in);
-        }
-
-        @Override
-        public Materia[] newArray(int size) {
-            return new Materia[size];
-        }
-    };
 
     public String getProfessor() {
         return professor;
@@ -117,14 +109,12 @@ public class Materia implements Parcelable {
         return aprovacao;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nome);
-        parcel.writeString(ano);
+    public String getCodigo() {
+        return codigo;
     }
 }

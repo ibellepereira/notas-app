@@ -1,5 +1,6 @@
 package org.lema.notasapp.infra.error;
 
+import android.util.Log;
 import org.greenrobot.eventbus.EventBus;
 import org.lema.notasapp.infra.exception.*;
 
@@ -26,6 +27,7 @@ public class HTTPErrorPublisher {
             // colocar nas activities mae
             EventBus.getDefault().post(new GenericConnectionErrorException());
         }
+        Log.e("erro", throwable.toString());
 
     }
 

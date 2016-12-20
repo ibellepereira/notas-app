@@ -32,7 +32,7 @@ public interface OAuth2AccessTokenService {
 
         private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         private Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(properties.getProperty(OAuth2.BASE_URL))
+                .baseUrl("http://ec2-35-165-113-113.us-west-2.compute.amazonaws.com:8080/notasapp-backend/")
                 .addConverterFactory(JacksonConverterFactory.create());
 
         public OAuth2AccessTokenService build() {

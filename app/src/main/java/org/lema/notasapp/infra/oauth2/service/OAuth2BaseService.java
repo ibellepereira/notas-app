@@ -22,7 +22,7 @@ public class OAuth2BaseService<T> {
 
         private OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         private Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(OAuth2.getProperties().getProperty(OAuth2.BASE_URL))
+                .baseUrl("http://ec2-35-165-113-113.us-west-2.compute.amazonaws.com:8080/notasapp-backend/")
                 .addConverterFactory(JacksonConverterFactory.create());
 
         public OAuth2BaseService context(Context context) {

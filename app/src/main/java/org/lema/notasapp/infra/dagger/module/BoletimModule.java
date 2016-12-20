@@ -3,6 +3,7 @@ package org.lema.notasapp.infra.dagger.module;
 import android.app.Application;
 
 import org.lema.notasapp.domain.service.BoletimService;
+import org.lema.notasapp.domain.service.SugestaoService;
 import org.lema.notasapp.infra.RetrofitUtils;
 import org.lema.notasapp.infra.interceptor.TokenInterceptor;
 
@@ -30,16 +31,25 @@ public class BoletimModule {
 
     @Provides
     public BoletimService getBoletimService() {
+        return getService(BoletimService.class);
+    }
+
+    @Provides
+    public SugestaoService getSugestaoService() {
+        return getService(SugestaoService.class);
+    }
+
+    private <T> T getService(Class<T> clazz) {
         httpClient.addInterceptor(new TokenInterceptor(application));
 
         httpClient.connectTimeout(30, TimeUnit.SECONDS);
         httpClient.readTimeout(30, TimeUnit.SECONDS);
 
         Retrofit retrofit = RetrofitUtils
-                                .getBuilder()
-                                .client(httpClient.build())
-                                .build();
+                .getBuilder()
+                .client(httpClient.build())
+                .build();
 
-        return retrofit.create(BoletimService.class);
+        return retrofit.create(clazz);
     }
 }
