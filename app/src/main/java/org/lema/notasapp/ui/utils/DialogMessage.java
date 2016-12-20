@@ -14,6 +14,10 @@ public class DialogMessage {
         this.listener = listener;
     }
 
+    public DialogMessage(String text) {
+        this.text = text;
+    }
+
     public String getText() {
         return text;
     }

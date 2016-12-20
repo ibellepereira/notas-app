@@ -60,4 +60,13 @@ public class DialogUtils {
 
     }
 
+    public void showCancelable(final DialogMessage message) {
+        new AlertDialog.Builder(context)
+                .setCancelable(true)
+                     /* TODO: extract strings to strings.xml */
+                .setMessage(message.getText())
+                .setTitle("Falha").create().show();
+
+    }
+
 }

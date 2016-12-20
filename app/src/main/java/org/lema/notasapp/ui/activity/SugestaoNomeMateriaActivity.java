@@ -14,6 +14,7 @@ import org.lema.notasapp.domain.model.factory.SugestaoFactory;
 import org.lema.notasapp.domain.service.SugestaoService;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
+import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
 import org.lema.notasapp.infra.listener.OnRetryListener;
 import org.lema.notasapp.infra.oauth2.model.AccessToken;
@@ -90,5 +91,10 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
                 sugerir();
             }
         }));
+    }
+
+    @Subscribe
+    public void handle(APIErrorEvent event) {
+        new DialogUtils(this).show(new DialogMessage(event.error.getMessage()));
     }
 }

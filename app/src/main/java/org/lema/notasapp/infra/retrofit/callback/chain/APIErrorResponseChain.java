@@ -28,7 +28,7 @@ public class APIErrorResponseChain implements ResponseChain {
             APIError error = converter.convert(responseBody);
             EventBus.getDefault().post(new APIErrorEvent(error));
         } catch (IOException e) {
-            Log.e("exception", e.toString() + "handle() - BoletimConverter");
+            Log.e("exception", e.toString() + "handle() - APIErrorResponseChain");
         }
     }
 

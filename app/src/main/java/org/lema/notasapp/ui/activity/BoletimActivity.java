@@ -26,6 +26,8 @@ import org.lema.notasapp.domain.model.Materia;
 import org.lema.notasapp.domain.service.BoletimService;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
+import org.lema.notasapp.infra.error.APIError;
+import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.BoletimEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
 import org.lema.notasapp.infra.listener.OnRetryListener;
@@ -177,6 +179,12 @@ public class BoletimActivity extends OAuthActivity {
                 buscaBoletim();
             }
         }));
+    }
+
+    @Subscribe
+    public void handle(APIErrorEvent event) {
+        Log.i("erro", event.error.toString());
+        dialogUtils.showCancelable(new DialogMessage(event.error.getMessage()));
     }
 
 }

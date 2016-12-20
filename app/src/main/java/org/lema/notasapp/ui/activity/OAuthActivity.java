@@ -3,6 +3,8 @@ package org.lema.notasapp.ui.activity;
 import android.os.Bundle;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.lema.notasapp.infra.error.APIError;
+import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
 import org.lema.notasapp.infra.exception.*;
 import org.lema.notasapp.infra.oauth2.client.OAuth2AccessTokenClient;
@@ -32,6 +34,8 @@ public abstract class OAuthActivity extends BaseActivity {
     public void handle(UnauthorizedException exception) {
         oAuth2AccessTokenClient.retry();
     }
+
+    public abstract void handle(APIErrorEvent event);
 
     public abstract void onReceiveAccessToken(AccessToken accessToken);
 
