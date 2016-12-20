@@ -95,6 +95,11 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
 
     @Subscribe
     public void handle(APIErrorEvent event) {
-        new DialogUtils(this).show(new DialogMessage(event.error.getMessage()));
+        new DialogUtils(this).show(new DialogMessage("Falha ao tentar enviar sugestão. Tente novamente!", new OnRetryListener() {
+            @Override
+            public void onRetry() {
+                sugerir();
+            }
+        }));
     }
 }

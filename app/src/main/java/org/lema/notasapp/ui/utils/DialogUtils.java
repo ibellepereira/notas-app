@@ -10,43 +10,15 @@ import android.support.v7.app.AlertDialog;
 public class DialogUtils {
 
     private Context context;
+    private AlertDialog.Builder builder;
 
     public DialogUtils(Context context) {
         this.context = context;
+        this.builder = new AlertDialog.Builder(context);
     }
 
-//    public void showConnectionError(final OnRetryListener successListener) {
-//        new AlertDialog.Builder(context)
-//                .setCancelable(false)
-//                     /* TODO: extract strings to strings.xml */
-//                .setMessage("Não foi possível contactar o servidor, verifique seu acesso a Internet")
-//                .setTitle("Sem conexão")
-//                .setPositiveButton("Tentar novamente", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        successListener.onRetry();
-//                    }
-//                }).create().show();
-//
-//    }
-//
-//    public void showConnectionLost(final OnRetryListener successListener) {
-//        new AlertDialog.Builder(context)
-//                .setCancelable(false)
-//                     /* TODO: extract strings to strings.xml */
-//                .setMessage("Falha durante a conexão com o servidor.")
-//                .setTitle("Falha")
-//                .setPositiveButton("Tentar novamente", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        successListener.onRetry();
-//                    }
-//                }).create().show();
-//
-//    }
-
     public void show(final DialogMessage message) {
-        new AlertDialog.Builder(context)
+        builder
                 .setCancelable(false)
                      /* TODO: extract strings to strings.xml */
                 .setMessage(message.getText())
@@ -61,7 +33,7 @@ public class DialogUtils {
     }
 
     public void showCancelable(final DialogMessage message) {
-        new AlertDialog.Builder(context)
+        builder
                 .setCancelable(true)
                      /* TODO: extract strings to strings.xml */
                 .setMessage(message.getText())
