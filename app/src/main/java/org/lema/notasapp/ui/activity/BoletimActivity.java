@@ -1,9 +1,7 @@
 package org.lema.notasapp.ui.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,18 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
 import org.lema.notasapp.adapter.BoletimAdapter;
@@ -31,7 +18,7 @@ import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.model.Aluno;
 import org.lema.notasapp.domain.model.Materia;
 import org.lema.notasapp.domain.service.BoletimService;
-import org.lema.notasapp.fragment.LoadingFragment;
+import org.lema.notasapp.ui.fragment.LoadingFragment;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
 import org.lema.notasapp.infra.event.BoletimEvent;
@@ -103,23 +90,9 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     public void buscaBoletim() {
-        //mProgressBar = new ProgressDialog(this);
-        //mProgressBar.setMessage("Buscando notas...");
-        //mProgressBar.show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Log.i("erro", "buscando..." + aluno.getMatricula());
-                        boletimService.getBoletimDo(aluno).enqueue(new BoletimCallback());
-                    }
-                });
-            }
-        }).start();
 
-
+        Log.i("erro", "buscando..." + aluno.getMatricula());
+        boletimService.getBoletimDo(aluno).enqueue(new BoletimCallback());
     }
 
     public void mostrarCarregando() {
@@ -140,7 +113,6 @@ public class BoletimActivity extends OAuthActivity {
         recyclerViewBoletim.setAdapter(new BoletimAdapter(this, materias));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewBoletim.setLayoutManager(layoutManager);
-        mProgressBar.dismiss();
     }
 
     @Override

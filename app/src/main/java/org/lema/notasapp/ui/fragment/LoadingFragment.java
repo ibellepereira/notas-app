@@ -1,4 +1,4 @@
-package org.lema.notasapp.fragment;
+package org.lema.notasapp.ui.fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
