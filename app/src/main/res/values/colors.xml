@@ -28,6 +28,8 @@
 
     <color name="colorDivider">#1f000000</color>
 
+    <color name="colorDialogScreenBackground">#6d000000</color>
+
     <!-- CORES DE TELAS QUE IRÃO SER ALTERADAS -->
     <color name="aprovado">#4CAF50</color>
     <color name="sem_nota">#DDD</color>

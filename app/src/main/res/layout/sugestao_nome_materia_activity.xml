@@ -1,27 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTintMode="screen"
+    android:background="@color/colorDialogScreenBackground"
+    android:alpha="0.5">
 
-    <TextView
-            android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@color/cardview_dark_background"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="79dp"
+        android:elevation="3dp">
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Materia"/>
+            android:text="Materia"
+            android:fontFamily="sans-serif"
+            android:textSize="18sp"
+            android:textColor="@color/colorTextDefaultLight"
+            android:textStyle="normal|bold"
+            android:layout_weight="0" />
 
-    <TextView
+        <TextView
             android:id="@+id/sugestao_nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
 
-    <EditText
+        <EditText
             android:id="@+id/sugestao_nome_sugerido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    <Button
-            android:id="@+id/btn_enviar_sugestao"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Enviar"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:padding="8dp"
+            android:layout_marginTop="24dp">
 
-</LinearLayout>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                />
+
+            <Button
+                android:id="@+id/btn_enviar_sugestao"
+                android:layout_width="wrap_content" android:layout_height="36dp"
+                android:text="Enviar"
+                android:layout_weight="0" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
