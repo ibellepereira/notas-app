@@ -1,8 +1,6 @@
 package org.lema.notasapp.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -42,24 +40,24 @@ public class LoginActivity extends AccessTokenActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        prepateOAuth2Properties();
+        prepareOAuth2Properties();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
         preencheReferencias();
-        loginButtonOnClick();
 
+        loginButtonOnClick();
 
         preparaTermosECondicoesLink();
 
     }
 
     private void carregarPreferencias() {
-        Aluno aluno = alunoDao.getAlunoLogado();
+
         boolean entrarAutomaticamente = alunoDao.entrarAutomaticamente();
 
-        if(aluno != null && entrarAutomaticamente) {
-            populaFormulario(aluno);
+        if(entrarAutomaticamente) {
+            populaFormulario(alunoDao.getAlunoLogado());
             mEntrarAutomaticamente.setChecked(alunoDao.entrarAutomaticamente());
         }
     }
@@ -106,7 +104,7 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
 
-    private void prepateOAuth2Properties() {
+    private void prepareOAuth2Properties() {
         Properties oauth2Properties = new Properties();
 
         oauth2Properties.setProperty(OAuth2.BASE_URL, "http://notasapp-lema.rhcloud.com/notasapp-backend/");
