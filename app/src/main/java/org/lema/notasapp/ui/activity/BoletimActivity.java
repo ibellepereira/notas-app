@@ -157,7 +157,13 @@ public class BoletimActivity extends OAuthActivity {
     @Subscribe
     public void handle(APIErrorEvent event) {
         Log.i("erro", event.error.toString());
-        dialogUtils.showCancelable(new DialogMessage(event.error.getMessage()));
+        dialogUtils.show(new DialogMessage(event.error.getMessage(), new OnRetryListener() {
+            @Override
+            public void onRetry() {
+                finish();
+            }
+        }));
+
     }
 
 }
