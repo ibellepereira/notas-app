@@ -2,10 +2,12 @@ package org.lema.notasapp.domain.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Aluno;
 
 import java.util.ArrayList;
@@ -16,8 +18,11 @@ import java.util.List;
  */
 public class AlunoDao extends SQLiteOpenHelper {
 
+    private Context context;
+
     public AlunoDao(Context context) {
         super(context, "notas-app", null, 1);
+        this.context = context;
     }
 
     @Override
@@ -49,4 +54,31 @@ public class AlunoDao extends SQLiteOpenHelper {
                                 cursor.getString(cursor.getColumnIndex("senha")));
         return null;
     }
+
+    public Aluno getAlunoLogado() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(
+                context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+
+        String matricula = sharedPreferences.getString(context.getString(R.string.preference_matricula), "");
+        String senha = sharedPreferences.getString(context.getString(R.string.preference_password), "");
+
+        return new Aluno(matricula, senha);
+    }
+
+    public boolean entrarAutomaticamente() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(
+                context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean(context.getString(R.string.preference_save), false);
+    }
+
+    public void setAlunoLogado(Aluno aluno, boolean entrarAutomaticamente) {
+        SharedPreferences sp = context.getSharedPreferences(context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        editor.putString(context.getString(R.string.preference_matricula), aluno.getMatricula());
+        editor.putString(context.getString(R.string.preference_password), aluno.getSenha());
+        editor.putBoolean(context.getString(R.string.preference_save), entrarAutomaticamente);
+        editor.commit();
+    }
+
 }

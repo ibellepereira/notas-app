@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by leonardocordeiro on 18/07/15.
  */
 
-public class Materia implements Serializable{
+public class Materia implements Serializable {
 
     private String nome;
     private Double notaDaAv1;
@@ -38,12 +38,6 @@ public class Materia implements Serializable{
         this.media = media;
 
     }
-
-    protected Materia(Parcel in) {
-        nome = in.readString();
-        ano = in.readString();
-    }
-
 
     public String getProfessor() {
         return professor;
@@ -108,7 +102,6 @@ public class Materia implements Serializable{
             aprovacao = StatusDeAprovacao.ESPERANDO_AV3;
         return aprovacao;
     }
-
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
