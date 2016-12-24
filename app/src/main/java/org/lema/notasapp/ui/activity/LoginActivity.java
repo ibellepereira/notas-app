@@ -45,19 +45,19 @@ public class LoginActivity extends AccessTokenActivity {
         setContentView(R.layout.login_activity);
 
         preencheReferencias();
-        loginButtonOnClick();
 
+        loginButtonOnClick();
 
         preparaTermosECondicoesLink();
 
     }
 
     private void carregarPreferencias() {
-        Aluno aluno = alunoDao.getAlunoLogado();
+
         boolean entrarAutomaticamente = alunoDao.entrarAutomaticamente();
 
-        if(aluno != null && entrarAutomaticamente) {
-            populaFormulario(aluno);
+        if(entrarAutomaticamente) {
+            populaFormulario(alunoDao.getAlunoLogado());
             mEntrarAutomaticamente.setChecked(alunoDao.entrarAutomaticamente());
         }
     }
