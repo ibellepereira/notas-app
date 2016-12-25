@@ -9,7 +9,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class RetrofitUtils {
 
     private static Retrofit.Builder builder = new Retrofit.Builder()
-            .baseUrl("http://ec2-35-165-113-113.us-west-2.compute.amazonaws.com:8080/notasapp-backend/v1/")
+            .baseUrl("http://35.162.178.76:8080/notasapp-backend/v1/")
             .addConverterFactory(JacksonConverterFactory.create());
 
     public static Retrofit getInstance() {

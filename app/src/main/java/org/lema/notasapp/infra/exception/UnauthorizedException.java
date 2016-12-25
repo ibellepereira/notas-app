@@ -5,6 +5,6 @@ package org.lema.notasapp.infra.exception;
  */
 public class UnauthorizedException extends RuntimeException {
     public UnauthorizedException() {
-        super("Matricula ou senha inválida.");
+        super("Unauthorized AccessToken.");
     }
 }

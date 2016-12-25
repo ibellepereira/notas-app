@@ -138,7 +138,6 @@ public class BoletimActivity extends OAuthActivity {
 
     @Subscribe
     public void onReceiveAccessToken(AccessToken accessToken) {
-
         buscaBoletim();
 
     }
