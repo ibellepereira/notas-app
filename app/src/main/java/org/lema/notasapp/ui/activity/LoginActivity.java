@@ -54,11 +54,11 @@ public class LoginActivity extends AccessTokenActivity {
 
     private void carregarPreferencias() {
 
-        boolean entrarAutomaticamente = alunoDao.entrarAutomaticamente();
+        boolean entrarAutomaticamente = alunoDao.obterSenhaSalva();
 
         if(entrarAutomaticamente) {
-            populaFormulario(alunoDao.getAlunoLogado());
-            mEntrarAutomaticamente.setChecked(alunoDao.entrarAutomaticamente());
+            populaFormulario(alunoDao.obterAlunoLogado());
+            mEntrarAutomaticamente.setChecked(alunoDao.obterSenhaSalva());
         }
     }
 
@@ -121,8 +121,10 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void populaFormulario(Aluno aluno) {
-        mMatricula.setText(aluno.getMatricula());
-        mSenha.setText(aluno.getSenha());
+        if(aluno != null) {
+            mMatricula.setText(aluno.getMatricula());
+            mSenha.setText(aluno.getSenha());
+        }
     }
 
     private boolean entrarAutomaticamente() {
@@ -130,7 +132,8 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void login(Aluno aluno) {
-        alunoDao.setAlunoLogado(aluno, entrarAutomaticamente());
+        alunoDao.salvarAlunoDoLogin(aluno);
+        alunoDao.salvarSenha(entrarAutomaticamente());
 
         Intent irParaBoletim = new Intent(this, BoletimActivity.class);
 
