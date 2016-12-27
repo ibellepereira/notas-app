@@ -15,6 +15,9 @@ public class Boletim {
     private List<Materia> materias;
     private Aluno aluno;
 
+    public Boletim() {
+    }
+
     public List<Materia> getMaterias() {
         return materias;
     }
