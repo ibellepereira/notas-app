@@ -16,6 +16,7 @@ import android.widget.TextView;
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.model.Aluno;
+import org.lema.notasapp.domain.preferences.SenhaPreferences;
 import org.lema.notasapp.infra.oauth2.OAuth2;
 import org.lema.notasapp.infra.oauth2.model.AccessToken;
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AccessTokenActivity {
 
     private Aluno aluno;
     private AlunoDao alunoDao = new AlunoDao(this);
+    private SenhaPreferences senhaPreferences = new SenhaPreferences(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +56,11 @@ public class LoginActivity extends AccessTokenActivity {
 
     private void carregarPreferencias() {
 
-        boolean entrarAutomaticamente = alunoDao.obterSenhaSalva();
+        boolean entrarAutomaticamente = senhaPreferences.obterSenhaSalva();
 
         if(entrarAutomaticamente) {
             populaFormulario(alunoDao.obterAlunoLogado());
-            mEntrarAutomaticamente.setChecked(alunoDao.obterSenhaSalva());
+            mEntrarAutomaticamente.setChecked(senhaPreferences.obterSenhaSalva());
         }
     }
 
@@ -133,7 +135,7 @@ public class LoginActivity extends AccessTokenActivity {
 
     private void login(Aluno aluno) {
         alunoDao.salvarAlunoDoLogin(aluno);
-        alunoDao.salvarSenha(entrarAutomaticamente());
+        senhaPreferences.salvarSenha(entrarAutomaticamente());
 
         Intent irParaBoletim = new Intent(this, BoletimActivity.class);
 
