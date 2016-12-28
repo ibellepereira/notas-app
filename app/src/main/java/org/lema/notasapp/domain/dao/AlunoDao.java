@@ -35,7 +35,7 @@ public class AlunoDao extends SQLiteOpenHelper {
 
     }
 
-    public void salvar(Aluno aluno) {
+    public void salvarAlunoDoLogin(Aluno aluno) {
         ContentValues values = new ContentValues();
 
         values.put("matricula", aluno.getMatricula());
@@ -46,7 +46,7 @@ public class AlunoDao extends SQLiteOpenHelper {
 
     }
 
-    public Aluno getAluno() {
+    public Aluno obterAlunoLogado() {
         Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM Aluno", null);
         List<Aluno> alunos = new ArrayList<>();
         if(cursor.moveToNext())
@@ -55,30 +55,18 @@ public class AlunoDao extends SQLiteOpenHelper {
         return null;
     }
 
-    public Aluno getAlunoLogado() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(
-                context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
-
-        String matricula = sharedPreferences.getString(context.getString(R.string.preference_matricula), "");
-        String senha = sharedPreferences.getString(context.getString(R.string.preference_password), "");
-
-        return new Aluno(matricula, senha);
-    }
-
-    public boolean entrarAutomaticamente() {
+    public boolean obterSenhaSalva() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(
                 context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
         return sharedPreferences.getBoolean(context.getString(R.string.preference_save), false);
     }
 
-    public void setAlunoLogado(Aluno aluno, boolean entrarAutomaticamente) {
+    public void salvarSenha(boolean entrarAutomaticamente){
         SharedPreferences sp = context.getSharedPreferences(context.getString(R.string.preference_user_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
-
-        editor.putString(context.getString(R.string.preference_matricula), aluno.getMatricula());
-        editor.putString(context.getString(R.string.preference_password), aluno.getSenha());
         editor.putBoolean(context.getString(R.string.preference_save), entrarAutomaticamente);
         editor.commit();
     }
+
 
 }

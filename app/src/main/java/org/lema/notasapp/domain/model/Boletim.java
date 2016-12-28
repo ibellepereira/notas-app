@@ -13,6 +13,10 @@ public class Boletim {
 
 
     private List<Materia> materias;
+    private Aluno aluno;
+
+    public Boletim() {
+    }
 
     public List<Materia> getMaterias() {
         return materias;
@@ -20,5 +24,13 @@ public class Boletim {
 
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }

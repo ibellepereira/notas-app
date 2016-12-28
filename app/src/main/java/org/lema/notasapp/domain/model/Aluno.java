@@ -7,8 +7,12 @@ import java.io.Serializable;
  */
 public class Aluno implements Serializable {
 
+    private String nome;
     private String matricula;
     private String senha;
+
+    public Aluno() {
+    }
 
     public Aluno(String matricula, String senha) {
         this.matricula = matricula;
@@ -23,4 +27,19 @@ public class Aluno implements Serializable {
         return senha;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

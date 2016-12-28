@@ -1,9 +1,7 @@
 package org.lema.notasapp.ui.activity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -38,11 +36,9 @@ public class BoletimActivity extends OAuthActivity {
 
     private RecyclerView recyclerViewBoletim;
     private Toolbar mToolbar;
-    private ProgressDialog mProgressBar;
     private ArrayList<Materia> materias;
     private Aluno aluno;
     private AlunoDao alunoDao = new AlunoDao(this);
-    private Handler handler = new Handler();
 
 
     private static String LOADING_FRAGMENT_TAG = "carregando";
@@ -60,7 +56,7 @@ public class BoletimActivity extends OAuthActivity {
 
         preparaToolbar();
 
-        carregarPreferencias();
+        carregaAluno();
 
         preencheReferencias();
 
@@ -82,8 +78,8 @@ public class BoletimActivity extends OAuthActivity {
         setSupportActionBar(mToolbar);
     }
 
-    private void carregarPreferencias() {
-        aluno = alunoDao.getAlunoLogado();
+    private void carregaAluno() {
+        aluno = alunoDao.obterAlunoLogado();
     }
 
     private void preencheReferencias(){
