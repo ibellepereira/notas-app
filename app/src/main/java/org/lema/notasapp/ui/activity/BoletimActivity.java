@@ -19,7 +19,6 @@ import org.lema.notasapp.domain.service.BoletimService;
 import org.lema.notasapp.ui.fragment.LoadingFragment;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
-import org.lema.notasapp.infra.error.APIError;
 import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.BoletimEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
@@ -107,12 +106,18 @@ public class BoletimActivity extends OAuthActivity {
         ocultarCarregando();
 
         materias = (ArrayList<Materia>) event.boletim.getMaterias();
+        aluno = event.boletim.getAluno();
+
+        salvaAlunoCompleto(aluno);
 
         recyclerViewBoletim.setAdapter(new BoletimAdapter(this, materias));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewBoletim.setLayoutManager(layoutManager);
     }
 
+    public void salvaAlunoCompleto(Aluno aluno) {
+        alunoDao.salvarAluno(aluno);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_notas, menu);

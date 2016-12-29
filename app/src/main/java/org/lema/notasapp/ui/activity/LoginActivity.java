@@ -134,7 +134,7 @@ public class LoginActivity extends AccessTokenActivity {
     }
 
     private void login(Aluno aluno) {
-        alunoDao.salvarAlunoDoLogin(aluno);
+        alunoDao.salvarAluno(aluno);
         senhaPreferences.salvarSenha(entrarAutomaticamente());
 
         Intent irParaBoletim = new Intent(this, BoletimActivity.class);
