@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Aluno;
+import org.lema.notasapp.infra.helper.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,39 +17,35 @@ import java.util.List;
 /**
  * Created by leonardocordeiro on 22/07/15.
  */
-public class AlunoDao extends SQLiteOpenHelper {
+public class AlunoDao {
 
-    private Context context;
+    private DatabaseHelper helper;
 
     public AlunoDao(Context context) {
-        super(context, "notas-app", null, 1);
-        this.context = context;
+        helper = new DatabaseHelper(context);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE Aluno (id PRIMARY KEY, matricula TEXT, senha TEXT);");
-    }
+    public void salvarAluno(Aluno aluno) {
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int antiga, int nova) {
+        SQLiteDatabase db = helper.getWritableDatabase();
 
-    }
-
-    public void salvarAlunoDoLogin(Aluno aluno) {
         ContentValues values = new ContentValues();
 
         values.put("matricula", aluno.getMatricula());
         values.put("senha", aluno.getSenha());
+        values.put("nome", aluno.getNome());
 
-        getWritableDatabase().execSQL("delete from Aluno");
-        getWritableDatabase().insert("Aluno", null, values);
+        db.execSQL("delete from Aluno");
+        db.insert("Aluno", null, values);
 
     }
 
     public Aluno obterAlunoLogado() {
-        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM Aluno", null);
-        List<Aluno> alunos = new ArrayList<>();
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM Aluno", null);
+
         if(cursor.moveToNext())
             return new Aluno(cursor.getString(cursor.getColumnIndex("matricula")),
                                 cursor.getString(cursor.getColumnIndex("senha")));
