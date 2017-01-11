@@ -1,6 +1,7 @@
 package org.lema.notasapp.domain.service;
 
 import org.lema.notasapp.domain.model.Sugestao;
+import org.lema.notasapp.domain.model.SugestaoDeNomeDeMateria;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -10,7 +11,7 @@ import retrofit2.http.POST;
  */
 public interface SugestaoService {
 
-    @POST("sugestao")
-    Call<Sugestao> enviar(@Body Sugestao sugestao);
+    @POST("sugestao/correcao-nome-materia")
+    Call<SugestaoDeNomeDeMateria> enviar(@Body SugestaoDeNomeDeMateria sugestao);
 
 }

@@ -1,15 +1,13 @@
 package org.lema.notasapp.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
 import org.lema.notasapp.R;
-import org.lema.notasapp.domain.model.Materia;
+import org.lema.notasapp.domain.model.MateriaDto;
 import org.lema.notasapp.viewholder.MateriaViewHolder;
 
 import java.util.List;
@@ -20,10 +18,10 @@ import java.util.List;
 
 public class BoletimAdapter extends RecyclerView.Adapter{
 
-    private List<Materia> materias;
+    private List<MateriaDto> materias;
     private Activity activity;
 
-    public BoletimAdapter(Activity activity, List<Materia> materias) {
+    public BoletimAdapter(Activity activity, List<MateriaDto> materias) {
         this.materias = materias;
         this.activity = activity;
     }
@@ -43,7 +41,7 @@ public class BoletimAdapter extends RecyclerView.Adapter{
 
         MateriaViewHolder holder = (MateriaViewHolder) viewHolder;
 
-        Materia materia = materias.get(position);
+        MateriaDto materia = materias.get(position);
         holder.onBind(materia);
 
     }

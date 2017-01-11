@@ -1,5 +1,6 @@
 package org.lema.notasapp.infra.retrofit.callback;
 
+import android.util.Log;
 import org.lema.notasapp.infra.retrofit.callback.chain.*;
 import org.lema.notasapp.infra.error.HTTPErrorPublisher;
 import retrofit2.*;

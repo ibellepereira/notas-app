@@ -1,5 +1,7 @@
 package org.lema.notasapp.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,12 @@ public class Aluno implements Serializable {
     private String senha;
 
     public Aluno() {
+    }
+
+    public Aluno(String nome, String matricula, String senha) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.senha = senha;
     }
 
     public Aluno(String matricula, String senha) {

@@ -8,9 +8,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
-import org.lema.notasapp.domain.model.Materia;
-import org.lema.notasapp.domain.model.Sugestao;
-import org.lema.notasapp.domain.model.factory.SugestaoFactory;
+import org.lema.notasapp.domain.dao.AlunoDao;
+import org.lema.notasapp.domain.model.*;
 import org.lema.notasapp.domain.service.SugestaoService;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
@@ -30,12 +29,17 @@ import javax.inject.Inject;
  * Created by leonardocordeiro on 16/12/16.
  */
 public class SugestaoNomeMateriaActivity extends OAuthActivity {
+    private MateriaDto materiaDto;
     private Materia materia;
     private TextView mNomeMateria;
     private EditText mNomeSugerido;
 
+    AlunoDao alunos = new AlunoDao(this);
+
     @Inject
     SugestaoService sugestaoService;
+
+    AlunoDto aluno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +48,16 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
 
         inject();
 
-        this.materia = (Materia) getIntent().getSerializableExtra("materia");
+        this.materiaDto = (MateriaDto) getIntent().getSerializableExtra("materia");
+
+        mapeiaAluno();
+        mapeiaMateria();
 
         mNomeMateria = (TextView) findViewById(R.id.sugestao_nome);
-        mNomeMateria.setText(materia.getNome());
+        mNomeMateria.setText(materiaDto.getNome());
 
         mNomeSugerido = (EditText) findViewById(R.id.sugestao_nome_sugerido);
+
         Button botaoSugerir = (Button) findViewById(R.id.btn_enviar_sugestao);
         botaoSugerir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +66,25 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
             }
         });
 
+    }
+
+    private void mapeiaMateria() {
+        Materia materia = new Materia();
+        materia.setNome(materiaDto.getNome());
+        materia.setAno(materiaDto.getAno());
+        materia.setCodigo(materiaDto.getCodigo());
+        this.materia = materia;
+    }
+
+    private void mapeiaAluno() {
+        AlunoDto alunoDto = new AlunoDto();
+
+        Aluno aluno = alunos.obterAlunoDoLogin();
+
+        alunoDto.setNome(aluno.getNome());
+        alunoDto.setMatricula(aluno.getMatricula());
+
+        this.aluno = alunoDto;
     }
 
     private void inject() {
@@ -72,12 +99,15 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
     }
 
     public void sugerir() {
-        String nomeSugerido = mNomeSugerido.getText().toString();
-        Sugestao sugestao = SugestaoFactory.criarSugestaoDeNomeParaMateria(materia, nomeSugerido);
 
-        sugestaoService.enviar(sugestao).enqueue(new OAuthCallback<Sugestao>() {
+        String nomeSugerido = mNomeSugerido.getText().toString();
+
+        SugestaoDeNomeDeMateria sugestao = new SugestaoDeNomeDeMateria(materia, nomeSugerido);
+        sugestao.setAluno(aluno);
+
+        sugestaoService.enviar(sugestao).enqueue(new OAuthCallback<SugestaoDeNomeDeMateria>() {
             @Override
-            public void handle(Call<Sugestao> call, Response<Sugestao> response) {
+            public void handle(Call<SugestaoDeNomeDeMateria> call, Response<SugestaoDeNomeDeMateria> response) {
                 Toast.makeText(SugestaoNomeMateriaActivity.this, "Sugestão enviada com sucesso!", Toast.LENGTH_LONG).show();
             }
         });
@@ -101,5 +131,9 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
                 sugerir();
             }
         }));
+    }
+
+    private Aluno obterAlunoLogado() {
+        return alunos.obterAlunoDoLogin();
     }
 }

@@ -27,8 +27,8 @@ public class HTTPErrorPublisher {
             // colocar nas activities mae
             EventBus.getDefault().post(new GenericConnectionErrorException());
         }
-        Log.e("erro", throwable.toString());
-
+        Log.e(this.getClass().getSimpleName() + " - erro", throwable.toString());
+        throwable.printStackTrace();
     }
 
 }

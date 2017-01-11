@@ -21,23 +21,26 @@ public class AlunoDao extends SQLiteOpenHelper {
     private Context context;
 
     public AlunoDao(Context context) {
-        super(context, "notas-app", null, 1);
+        super(context, "notas-app", null, 3);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE Aluno (id PRIMARY KEY, matricula TEXT, senha TEXT);");
+        sqLiteDatabase.execSQL("CREATE TABLE Aluno (id PRIMARY KEY, matricula TEXT, nome TEXT, senha TEXT);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int antiga, int nova) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS Aluno");
+        onCreate(sqLiteDatabase);
     }
 
     public void salvarAlunoDoLogin(Aluno aluno) {
         ContentValues values = new ContentValues();
 
+        if(aluno.getNome() != null)
+            values.put("nome", aluno.getNome());
         values.put("matricula", aluno.getMatricula());
         values.put("senha", aluno.getSenha());
 
@@ -46,12 +49,19 @@ public class AlunoDao extends SQLiteOpenHelper {
 
     }
 
-    public Aluno obterAlunoLogado() {
+    public Aluno obterAlunoDoLogin() {
         Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM Aluno", null);
-        List<Aluno> alunos = new ArrayList<>();
-        if(cursor.moveToNext())
-            return new Aluno(cursor.getString(cursor.getColumnIndex("matricula")),
-                                cursor.getString(cursor.getColumnIndex("senha")));
+        if(cursor.moveToNext()) {
+            String nome = null;
+            if (!cursor.isNull(cursor.getColumnIndex("nome"))) {
+                nome = cursor.getString(cursor.getColumnIndex("nome"));
+            }
+
+            return new Aluno(nome,
+                    cursor.getString(cursor.getColumnIndex("matricula")),
+                    cursor.getString(cursor.getColumnIndex("senha")));
+
+        }
         return null;
     }
 

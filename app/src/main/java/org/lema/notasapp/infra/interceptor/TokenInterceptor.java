@@ -3,6 +3,7 @@ package org.lema.notasapp.infra.interceptor;
 import java.io.IOException;
 
 import android.content.Context;
+import android.util.Log;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -30,6 +31,7 @@ public class TokenInterceptor implements Interceptor {
                 .header("Authorization", "Bearer " + token.getCode())
                 .method(original.method(), original.body());
 
+        Log.i("TokenInterceptor", "sending with accesstoken: " + token.getCode());
         Request request = requestBuilder.build();
         return chain.proceed(request);
     }

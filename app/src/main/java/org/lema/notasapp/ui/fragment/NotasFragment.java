@@ -23,7 +23,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import org.lema.notasapp.R;
 import org.lema.notasapp.ui.activity.BoletimActivity;
 import org.lema.notasapp.ui.adapter.MateriasAdapter;
-import org.lema.notasapp.domain.model.Materia;
+import org.lema.notasapp.domain.model.MateriaDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class NotasFragment extends RenderableFragment {
     private BoletimActivity activity;
     private View fragment;
 
-    private List<Materia> materias = new ArrayList<>();
+    private List<MateriaDto> materias = new ArrayList<>();
 
     @Nullable
     @Override

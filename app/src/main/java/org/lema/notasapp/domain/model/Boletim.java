@@ -1,6 +1,5 @@
 package org.lema.notasapp.domain.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
@@ -12,17 +11,17 @@ import java.util.List;
 public class Boletim {
 
 
-    private List<Materia> materias;
+    private List<MateriaDto> materias;
     private Aluno aluno;
 
     public Boletim() {
     }
 
-    public List<Materia> getMaterias() {
+    public List<MateriaDto> getMaterias() {
         return materias;
     }
 
-    public void setMaterias(List<Materia> materias) {
+    public void setMaterias(List<MateriaDto> materias) {
         this.materias = materias;
     }
 

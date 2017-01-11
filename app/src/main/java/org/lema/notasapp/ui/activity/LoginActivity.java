@@ -57,7 +57,7 @@ public class LoginActivity extends AccessTokenActivity {
         boolean entrarAutomaticamente = alunoDao.obterSenhaSalva();
 
         if(entrarAutomaticamente) {
-            populaFormulario(alunoDao.obterAlunoLogado());
+            populaFormulario(alunoDao.obterAlunoDoLogin());
             mEntrarAutomaticamente.setChecked(alunoDao.obterSenhaSalva());
         }
     }

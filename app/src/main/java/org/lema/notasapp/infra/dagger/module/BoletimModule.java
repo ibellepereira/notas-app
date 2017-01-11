@@ -2,6 +2,7 @@ package org.lema.notasapp.infra.dagger.module;
 
 import android.app.Application;
 
+import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.service.BoletimService;
 import org.lema.notasapp.domain.service.SugestaoService;
 import org.lema.notasapp.infra.RetrofitUtils;
@@ -38,6 +39,7 @@ public class BoletimModule {
     public SugestaoService getSugestaoService() {
         return getService(SugestaoService.class);
     }
+
 
     private <T> T getService(Class<T> clazz) {
         httpClient.addInterceptor(new TokenInterceptor(application));

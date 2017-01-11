@@ -14,12 +14,11 @@ import org.lema.notasapp.R;
 import org.lema.notasapp.adapter.BoletimAdapter;
 import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.model.Aluno;
-import org.lema.notasapp.domain.model.Materia;
+import org.lema.notasapp.domain.model.MateriaDto;
 import org.lema.notasapp.domain.service.BoletimService;
 import org.lema.notasapp.ui.fragment.LoadingFragment;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
-import org.lema.notasapp.infra.error.APIError;
 import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.BoletimEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
@@ -36,10 +35,9 @@ public class BoletimActivity extends OAuthActivity {
 
     private RecyclerView recyclerViewBoletim;
     private Toolbar mToolbar;
-    private ArrayList<Materia> materias;
+    private ArrayList<MateriaDto> materias;
     private Aluno aluno;
     private AlunoDao alunoDao = new AlunoDao(this);
-
 
     private static String LOADING_FRAGMENT_TAG = "carregando";
     private LoadingFragment loadingFragment;
@@ -79,7 +77,7 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     private void carregaAluno() {
-        aluno = alunoDao.obterAlunoLogado();
+        aluno = alunoDao.obterAlunoDoLogin();
     }
 
     private void preencheReferencias(){
@@ -105,12 +103,19 @@ public class BoletimActivity extends OAuthActivity {
     @Subscribe
     public void preencheLista(BoletimEvent event) {
         ocultarCarregando();
+        salvarAluno(event.boletim.getAluno());
 
-        materias = (ArrayList<Materia>) event.boletim.getMaterias();
+        Aluno comNome = alunoDao.obterAlunoDoLogin();
+
+        materias = (ArrayList<MateriaDto>) event.boletim.getMaterias();
 
         recyclerViewBoletim.setAdapter(new BoletimAdapter(this, materias));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewBoletim.setLayoutManager(layoutManager);
+    }
+
+    private void salvarAluno(Aluno aluno) {
+        alunoDao.salvarAlunoDoLogin(aluno);
     }
 
     @Override
