@@ -34,4 +34,19 @@
     <string name="activity_horario_name">Horários</string>
     <string name="activity_boletim_name">Boletim</string>
     <string name="activity_dashboard_name">Dashboard</string>
+
+    <string name="loading">Carregando</string>
+
+    <string name="dialog_materia_title">Matéria</string>
+    <string name="dialog_materia_message">Digite o nome correto da matéria</string>
+    <string name="dialog_materia_positive_button">Sugerir</string>
+    <string name="dialog_materia_negative_button">Cancelar</string>
+
+    <string name="dialog_materia_response_title_sucess">Sucesso</string>
+    <string name="dialog_materia_response_message_sucess">Sugestão enviada com sucesso</string>
+    <string name="dialog_materia_response_title_fail">Falha</string>
+    <string name="dialog_materia_response_message_fail">Algum erro ocorreu</string>
+    <string name="dialog_materia_response_positive_button_fail">Tentar novamente</string>
+    <string name="dialog_materia_response_negative_button_fail">Cancelar</string>
+
 </resources>
