@@ -1,5 +1,6 @@
 package org.lema.notasapp.ui.utils;
 
+import org.lema.notasapp.infra.listener.OnCancelListener;
 import org.lema.notasapp.infra.listener.OnRetryListener;
 
 /**
@@ -8,10 +9,17 @@ import org.lema.notasapp.infra.listener.OnRetryListener;
 public class DialogMessage {
     private String text;
     private OnRetryListener listener;
+    private OnCancelListener listenerCancel;
 
     public DialogMessage(String text, OnRetryListener listener) {
         this.text = text;
         this.listener = listener;
+    }
+
+    public DialogMessage(String text, OnRetryListener listener, OnCancelListener listenerCancel) {
+        this.text = text;
+        this.listener = listener;
+        this.listenerCancel = listenerCancel;
     }
 
     public DialogMessage(String text) {
@@ -24,5 +32,9 @@ public class DialogMessage {
 
     public OnRetryListener getListener() {
         return listener;
+    }
+
+    public OnCancelListener getListenerCancel() {
+        return  listenerCancel;
     }
 }

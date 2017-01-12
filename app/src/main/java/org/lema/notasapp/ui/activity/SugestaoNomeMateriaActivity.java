@@ -15,9 +15,11 @@ import org.lema.notasapp.domain.model.*;
 import org.lema.notasapp.domain.service.SugestaoService;
 import org.lema.notasapp.infra.app.NotasAppAplication;
 import org.lema.notasapp.infra.dagger.component.BoletimComponent;
+import org.lema.notasapp.infra.error.APIError;
 import org.lema.notasapp.infra.event.APIErrorEvent;
 import org.lema.notasapp.infra.event.ThrowableEvent;
 import org.lema.notasapp.infra.listener.OnRetryListener;
+import org.lema.notasapp.infra.listener.OnCancelListener;
 import org.lema.notasapp.infra.oauth2.model.AccessToken;
 import org.lema.notasapp.infra.retrofit.callback.OAuthCallback;
 import org.lema.notasapp.ui.utils.DialogMessage;
@@ -121,20 +123,30 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
 
     @Subscribe
     public void handle(ThrowableEvent event) {
-        new DialogUtils(this).show(new DialogMessage(event.exception.getMessage(), new OnRetryListener() {
+        new DialogUtils(this).showCancel(new DialogMessage(event.exception.getMessage(), new OnRetryListener() {
             @Override
             public void onRetry() {
                 sugerir();
+            }
+        }, new OnCancelListener() {
+            @Override
+            public void onCancel() {
+                finish();
             }
         }));
     }
 
     @Subscribe
     public void handle(APIErrorEvent event) {
-        new DialogUtils(this).show(new DialogMessage("Falha ao tentar enviar sugestão. Tente novamente!", new OnRetryListener() {
+        new DialogUtils(this).showCancel(new DialogMessage("Falha ao tentar enviar sugestão.", new OnRetryListener() {
             @Override
             public void onRetry() {
                 sugerir();
+            }
+        }, new OnCancelListener() {
+            @Override
+            public void onCancel() {
+                finish();
             }
         }));
     }
