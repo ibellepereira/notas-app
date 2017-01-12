@@ -18,7 +18,11 @@ public class Aluno implements Serializable {
         this.matricula = matricula;
         this.senha = senha;
     }
-
+    public Aluno(String matricula, String senha, String nome) {
+        this.matricula = matricula;
+        this.senha = senha;
+        this.nome = nome;
+    }
     public String getMatricula() {
         return matricula;
     }
