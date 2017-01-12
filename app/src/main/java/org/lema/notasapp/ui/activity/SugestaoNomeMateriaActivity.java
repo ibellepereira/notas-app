@@ -1,5 +1,7 @@
 package org.lema.notasapp.ui.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +34,7 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
     private MateriaDto materiaDto;
     private Materia materia;
     private TextView mNomeMateria;
-    private EditText mNomeSugerido;
+    private String mNomeSugerido;
 
     AlunoDao alunos = new AlunoDao(this);
 
@@ -44,27 +46,29 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sugestao_nome_materia_activity);
+        setContentView(R.layout.carregando_fragment);
 
         inject();
 
         this.materiaDto = (MateriaDto) getIntent().getSerializableExtra("materia");
+        this.mNomeSugerido = (String) getIntent().getSerializableExtra("nomeSugerido");
 
         mapeiaAluno();
         mapeiaMateria();
 
-        mNomeMateria = (TextView) findViewById(R.id.sugestao_nome);
-        mNomeMateria.setText(materiaDto.getNome());
+        sugerir();
+        //mNomeMateria = (TextView) findViewById(R.id.sugestao_nome);
+        //mNomeMateria.setText(materiaDto.getNome());
 
-        mNomeSugerido = (EditText) findViewById(R.id.sugestao_nome_sugerido);
+        //mNomeSugerido = (EditText) findViewById(R.id.sugestao_nome_sugerido);
 
-        Button botaoSugerir = (Button) findViewById(R.id.btn_enviar_sugestao);
-        botaoSugerir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sugerir();
-            }
-        });
+       // Button botaoSugerir = (Button) findViewById(R.id.btn_enviar_sugestao);
+        //botaoSugerir.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        sugerir();
+        //    }
+        //});
 
     }
 
@@ -100,15 +104,17 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
 
     public void sugerir() {
 
-        String nomeSugerido = mNomeSugerido.getText().toString();
+        //String nomeSugerido = mNomeSugerido.getText().toString();
 
-        SugestaoDeNomeDeMateria sugestao = new SugestaoDeNomeDeMateria(materia, nomeSugerido);
+        SugestaoDeNomeDeMateria sugestao = new SugestaoDeNomeDeMateria(materia, mNomeSugerido);
         sugestao.setAluno(aluno);
 
         sugestaoService.enviar(sugestao).enqueue(new OAuthCallback<SugestaoDeNomeDeMateria>() {
             @Override
             public void handle(Call<SugestaoDeNomeDeMateria> call, Response<SugestaoDeNomeDeMateria> response) {
-                Toast.makeText(SugestaoNomeMateriaActivity.this, "Sugestão enviada com sucesso!", Toast.LENGTH_LONG).show();
+                mostrarConfirmacao();
+                //Toast.makeText(SugestaoNomeMateriaActivity.this, "Sugestão enviada com sucesso!", Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -135,5 +141,22 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
 
     private Aluno obterAlunoLogado() {
         return alunos.obterAlunoDoLogin();
+    }
+
+
+
+    public void mostrarConfirmacao() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.dialog_materia_response_message_sucess)
+                .setTitle(R.string.dialog_materia_response_title_sucess)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        finish();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

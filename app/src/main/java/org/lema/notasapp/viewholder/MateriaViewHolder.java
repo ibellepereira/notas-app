@@ -1,10 +1,14 @@
 package org.lema.notasapp.viewholder;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.lema.notasapp.R;
@@ -50,13 +54,62 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
         media.setText(String.valueOf(materia.getMedia()));
         nomeMateria.setText(String.valueOf(materia.getNome()));
 
+
+
+
         btnSugerir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent irParaSugestao = new Intent(MateriaViewHolder.this.activity, SugestaoNomeMateriaActivity.class);
-                irParaSugestao.putExtra("materia", materia);
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-                activity.startActivity(irParaSugestao);
+                final EditText input = new EditText(activity);
+                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                builder.setView(input);
+
+                // 2. Chain together various setter methods to set the dialog characteristics
+                builder.setMessage(R.string.dialog_materia_message + " " + materia.getNome())
+                        .setTitle(R.string.dialog_materia_title)
+                        .setPositiveButton(R.string.dialog_materia_positive_button, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int id) {
+                                // User clicked OK, so save the mSelectedItems results somewhere
+                                // or return them to the component that opened the dialog
+                                //...
+                                Intent irParaSugestao = new Intent(MateriaViewHolder.this.activity, SugestaoNomeMateriaActivity.class);
+                                irParaSugestao.putExtra("materia", materia);
+                                irParaSugestao.putExtra("nomeSugerido", input.getText().toString());
+
+
+                                activity.startActivity(irParaSugestao);
+                                //activity.sugerir(materia, input.getText().toString(), activity);
+                                //Toast.makeText(activity, "Sugestão "+ input.getText() +" enviada com sucesso!", Toast.LENGTH_LONG).show();
+                               /* AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                                builder.setMessage(R.string.dialog_materia_response_message_sucess)
+                                        .setTitle(R.string.dialog_materia_response_title_sucess)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialogInterface, int id) {
+                                                dialogInterface.dismiss();
+                                            }
+                                        });
+
+                                AlertDialog dialog = builder.create();
+                                dialog.show();*/
+
+
+                            }
+                        }).setNegativeButton(R.string.dialog_materia_negative_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        //...
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                // 3. Get the AlertDialog from create()
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         periodoMateria.setText(materia.getAno());
