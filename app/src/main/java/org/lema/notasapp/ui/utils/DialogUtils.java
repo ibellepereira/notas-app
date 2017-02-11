@@ -32,6 +32,26 @@ public class DialogUtils {
 
     }
 
+    public void showCancel(final DialogMessage message) {
+        builder
+                .setCancelable(false)
+                     /* TODO: extract strings to strings.xml */
+                .setMessage(message.getText())
+                .setTitle("Falha")
+                .setPositiveButton("Tentar novamente", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        message.getListener().onRetry();
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                        message.getListenerCancel().onCancel();
+                }
+                }).create().show();
+    }
+
     public void showCancelable(final DialogMessage message) {
         builder
                 .setCancelable(true)
