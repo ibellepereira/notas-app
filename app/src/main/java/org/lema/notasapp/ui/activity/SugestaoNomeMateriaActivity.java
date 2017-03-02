@@ -99,7 +99,7 @@ public class SugestaoNomeMateriaActivity extends OAuthActivity {
         component.inject(this);
     }
 
-    @Override
+    @Subscribe
     public void onReceiveAccessToken(AccessToken accessToken) {
         sugerir();
     }
