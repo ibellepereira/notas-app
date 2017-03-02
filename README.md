@@ -1,7 +1,8 @@
+## Guia para a tarefa https://trello.com/c/Y63wWF38
+
 O objetivo é consumir a API do uezoapp e conseguir listar os posts. 
 Como estamos trabalhando com `Retrofit`, `Dagger` e `EventBus` vamos precisar dos componentes:
 
-[diagrama-1]
 
 Presentation Layer: `FeedActivity` podem haver mais, dependendo de como fizerem. 
 Mas é importante que todas herdem de `OAuthActivity` e anotem com `@Subscribe` 
