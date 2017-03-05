@@ -34,4 +34,19 @@
     <string name="activity_horario_name">Horários</string>
     <string name="activity_boletim_name">Boletim</string>
     <string name="activity_dashboard_name">Dashboard</string>
+
+    <string name="activity_filtros_description">Preferências do Feed de Notícias:</string>
+    <string name="activity_filtros_check_all">Todas as Atividades</string>
+    <string name="activity_filtros_item_1">UEZO</string>
+    <string name="activity_filtros_item_2">Ciências Biológicas</string>
+    <string name="activity_filtros_item_3">Tecnologia em Biotecnologia</string>
+    <string name="activity_filtros_item_4">Ciência da Computação</string>
+    <string name="activity_filtros_item_5">Análise e Desenvolvimento de Sistemas</string>
+    <string name="activity_filtros_item_6">Farmácia</string>
+    <string name="activity_filtros_item_7">Produção de Fármacos</string>
+    <string name="activity_filtros_item_8">Polímeros</string>
+    <string name="activity_filtros_item_9">Construção Naval</string>
+    <string name="activity_filtros_item_10">Processos Metalúrgicos</string>
+    <string name="activity_filtros_item_11">Engenharia de Produção</string>
+    <string name="activity_filtros_check_notifications">Receber notificação para novas publicações</string>
 </resources>

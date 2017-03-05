@@ -43,4 +43,8 @@
     <dimen name="activity_login_terms_padding">24dp</dimen>
 
     <dimen name="list_item_horario">70dp</dimen>
+
+    <dimen name="activity_filtro_description_text_size">20dp</dimen>
+    <dimen name="activity_filtro_checkbox_text_size">18dp</dimen>
+    <dimen name="activity_filtro_margin">4sp</dimen>
 </resources>
