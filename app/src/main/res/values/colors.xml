@@ -34,8 +34,8 @@
     <color name="esperando_av3">#FBC02D</color>
     <color name="reprovado">#F44336</color>
 
-    <color name="checkbox_checked">@color/colorSecundary</color>
-    <color name="checkbox_unchecked">@color/colorTextDefaultDark</color>
+    <color name="checkbox_checked">#ff2f57</color>
+    <color name="checkbox_unchecked">#0a0a0a</color>
 
     <color name="unliked">#DDD</color>
     <color name="liked">#F44336</color>

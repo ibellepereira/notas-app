@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/filtros_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/backgroundDefaultLight">
@@ -11,7 +12,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/activity_filtro_margin"
@@ -20,8 +20,8 @@
             android:textSize="@dimen/activity_filtro_description_text_size" />
 
         <CheckBox
-            android:id="@+id/checkBoxDeafult1"
-            android:layout_width="fill_parent"
+            android:id="@+id/checkBox_all"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:checked="false"
@@ -40,8 +40,8 @@
             android:layout_marginBottom="@dimen/activity_filtro_margin">
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_1"
@@ -57,8 +57,8 @@
                 android:background="@color/colorDivider" />
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_2"
@@ -68,8 +68,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_3"
@@ -79,8 +79,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_4"
@@ -90,8 +90,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op5"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_5"
@@ -101,8 +101,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op6"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_6"
@@ -112,8 +112,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op7"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_7"
@@ -123,8 +123,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op8"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_8"
@@ -134,8 +134,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op9"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_9"
@@ -145,8 +145,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op10"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_10"
@@ -156,8 +156,8 @@
                 android:buttonTint="@color/checkbox_unchecked"/>
 
             <CheckBox
-                android:id="@+id/checkBoxDeafult1"
-                android:layout_width="fill_parent"
+                android:id="@+id/checkbox_op11"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/activity_filtros_item_11"
@@ -173,11 +173,11 @@
             android:background="@color/colorDivider" />
 
         <CheckBox
-            android:id="@+id/checkBoxDeafult1"
-            android:layout_width="fill_parent"
+            android:id="@+id/checkbox_alerts"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/activity_filtros_check_notifications"
+            android:text="@string/activity_filtros_check_alerts"
             android:checked="false"
             android:layout_margin="@dimen/activity_filtro_margin"
             android:textSize="@dimen/activity_filtro_checkbox_text_size"

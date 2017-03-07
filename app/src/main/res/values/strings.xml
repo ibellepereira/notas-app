@@ -48,7 +48,7 @@
     <string name="activity_filtros_item_9">Construção Naval</string>
     <string name="activity_filtros_item_10">Processos Metalúrgicos</string>
     <string name="activity_filtros_item_11">Engenharia de Produção</string>
-    <string name="activity_filtros_check_notifications">Receber notificação para novas publicações</string>
+    <string name="activity_filtros_check_alerts">Receber notificação para novas publicações</string>
 
     <string name="activity_post_title">PROF. ALESSANDRO KAPPEL JORDÃO CONTEMPLADO NO EDITAL APQ1/2016</string>
     <string name="activity_post_postado">Postado\t</string>
