@@ -49,4 +49,15 @@
     <string name="activity_filtros_item_10">Processos Metalúrgicos</string>
     <string name="activity_filtros_item_11">Engenharia de Produção</string>
     <string name="activity_filtros_check_notifications">Receber notificação para novas publicações</string>
+
+    <string name="activity_post_title">PROF. ALESSANDRO KAPPEL JORDÃO CONTEMPLADO NO EDITAL APQ1/2016</string>
+    <string name="activity_post_postado">Postado\t</string>
+    <string name="activity_post_data">sábado, 05 de março de 2017</string>
+    <string name="activity_post_publicado">Publicado por:</string>
+    <string name="activity_post_autor">CAIO CASTRO </string>
+    <string name="activity_post_author_description">Aluno do sexto período do curso de Engenharia de Produção na UEZO, voluntário na UEZO Jr. Consultoria e redator no NOTAS APP.</string>
+    <string name="activity_post_author_icon_content_description">Foto do autor</string>
+    <string name="article">
+        \t\t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. In quis magna neque. Ut dictum ex odio, tincidunt fringilla lorem mattis et. Morbi ut velit posuere, porttitor dolor cursus, interdum nisl. Proin vulputate facilisis ante, vel finibus est tincidunt vel. \n
+        </string>
 </resources>

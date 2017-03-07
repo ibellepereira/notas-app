@@ -47,4 +47,18 @@
     <dimen name="activity_filtro_description_text_size">20dp</dimen>
     <dimen name="activity_filtro_checkbox_text_size">18dp</dimen>
     <dimen name="activity_filtro_margin">4sp</dimen>
+
+    <dimen name="activity_post_title">30sp</dimen>
+    <dimen name="activity_post_time">12sp</dimen>
+    <dimen name="activity_post_margin">10sp</dimen>
+
+    <dimen name="activity_post_padding">4sp</dimen>
+
+    <dimen name="activity_post_text_size">14sp</dimen>
+
+    <dimen name="activity_post_author_name_size">24sp</dimen>
+    <dimen name="activity_post_author_description_text_size">12sp</dimen>
+
+    <dimen name="activity_post_like_button_size">50sp</dimen>
+    <dimen name="activity_post_author_icon_size">50sp</dimen>
 </resources>
