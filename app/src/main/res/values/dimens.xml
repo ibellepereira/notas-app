@@ -43,4 +43,18 @@
     <dimen name="activity_login_terms_padding">24dp</dimen>
 
     <dimen name="list_item_horario">70dp</dimen>
+
+    <dimen name="activity_noticia_title_size">40sp</dimen>
+    <dimen name="activity_noticia_toolbar_min">300sp</dimen>
+    <dimen name="activity_noticia_toolbar_max">600sp</dimen>
+    <dimen name="activity_noticia_margin">10sp</dimen>
+    <dimen name="activity_noticia_text_size">16sp</dimen>
+
+    <dimen name="activity_noticia_author_name">24sp</dimen>
+    <dimen name="activity_noticia_about_author">13sp</dimen>
+    <dimen name="activity_noticia_author_icon">60sp</dimen>
+
+    <dimen name="like_icon">40sp</dimen>
+    <dimen name="like_number">10sp</dimen>
+
 </resources>

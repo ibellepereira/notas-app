@@ -36,4 +36,12 @@
     <color name="esperando_av3">#FBC02D</color>
     <color name="reprovado">#F44336</color>
 
+    <!-- CORES DA NOTICIA -->
+    <color name="color_1">#0374ae</color>
+    <color name="color_2">#ff2f57</color>
+    <color name="color_3">#714c71</color>
+    <color name="color_4">#285e92</color>
+
+    <color name="color_date">#c8b7b7d1</color>
+
 </resources>
