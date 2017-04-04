@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1006605261930",
+    "firebase_url": "https://notas-app-b06d1.firebaseio.com",
+    "project_id": "notas-app-b06d1",
+    "storage_bucket": "notas-app-b06d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1006605261930:android:fe0e6ed85509973e",
+        "android_client_info": {
+          "package_name": "org.lema.notasapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1006605261930-87so4b3fqql63qtlrg1ua6qvso3atmco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAk00oMhmcsLF445iqeNa9vLYl3PKALkIY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

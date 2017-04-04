@@ -103,19 +103,21 @@ public class BoletimActivity extends OAuthActivity {
     @Subscribe
     public void preencheLista(BoletimEvent event) {
         ocultarCarregando();
-        salvarAluno(event.boletim.getAluno());
 
         Aluno comNome = alunoDao.obterAlunoDoLogin();
 
         materias = (ArrayList<MateriaDto>) event.boletim.getMaterias();
+        aluno = event.boletim.getAluno();
+
+        salvaAlunoCompleto(aluno);
 
         recyclerViewBoletim.setAdapter(new BoletimAdapter(this, materias));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerViewBoletim.setLayoutManager(layoutManager);
     }
 
-    private void salvarAluno(Aluno aluno) {
-        alunoDao.salvarAlunoDoLogin(aluno);
+    public void salvaAlunoCompleto(Aluno aluno) {
+        alunoDao.salvarAluno(aluno);
     }
 
     @Override

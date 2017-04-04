@@ -43,4 +43,10 @@
     <dimen name="activity_login_terms_padding">24dp</dimen>
 
     <dimen name="list_item_horario">70dp</dimen>
+    <dimen name="cardview_feed_size">200dp</dimen>
+
+    <dimen name="feed_title_no_photo_padding_horizontal">5dp</dimen>
+    <dimen name="feed_tag_padding_horizontal">5dp</dimen>
+    <dimen name="feed_tag_padding_vertical">2dp</dimen>
+    <dimen name="feed_tag_margin_right">4dp</dimen>
 </resources>

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.activity.BoletimActivity">
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:icon="@drawable/abc_ic_menu_overflow_material"
+        android:title="Mais informações"
+        app:showAsAction="ifRoom">
+
+        <item
+            android:id="@+id/menu_logout"
+            android:title="Pesquisar"
+            />
+
+
+    </item>
+
+</menu>

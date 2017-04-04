@@ -30,6 +30,9 @@
 
     <color name="colorDialogScreenBackground">#6d000000</color>
 
+    <color name="colorFeedGradientBackgroundTop">#5e35b1</color>
+    <color name="colorFeedGradientBackgroundBottom">#7e339f</color>
+
     <!-- CORES DE TELAS QUE IRÃO SER ALTERADAS -->
     <color name="aprovado">#4CAF50</color>
     <color name="sem_nota">#DDD</color>
