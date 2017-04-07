@@ -30,6 +30,6 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
 
     public void onBind(final Post post) {
         mensagem.setText(post.getTitulo());
-        autor.setText(post.getAutor().getNome());
+        autor.setText(post.getAutor() != null ? post.getAutor().getNome() : "");
     }
 }

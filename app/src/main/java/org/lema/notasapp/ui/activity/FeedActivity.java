@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,7 +16,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.lema.notasapp.R;
 import org.lema.notasapp.adapter.FeedAdapter;
-import org.lema.notasapp.domain.model.Autor;
 import org.lema.notasapp.domain.model.Post;
 
 import java.util.ArrayList;
@@ -68,7 +66,7 @@ public class FeedActivity extends AppCompatActivity {
 
     private void preencheReferencias() {
         mRecyclerViewFeed = (RecyclerView) findViewById(R.id.rv_feed);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar_feed);
+        //mToolbar = (Toolbar) findViewById(R.id.toolbar_feed);
     }
 
     public void atualizaLista(HashMap<String, Post> hashmap) {
@@ -110,8 +108,8 @@ public class FeedActivity extends AppCompatActivity {
 
 
     private void preparaToolbar(){
-        mToolbar.setTitle("Notícias");
+       /* mToolbar.setTitle("Notícias");
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
     }
 }

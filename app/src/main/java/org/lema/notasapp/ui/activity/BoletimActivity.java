@@ -71,9 +71,11 @@ public class BoletimActivity extends OAuthActivity {
     }
 
     private void preparaToolbar(){
+/*
         mToolbar = (Toolbar) findViewById(R.id.toolbar_boletim);
         mToolbar.setTitle(R.string.activity_boletim_name);
         setSupportActionBar(mToolbar);
+*/
     }
 
     private void carregaAluno() {
