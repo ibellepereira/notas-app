@@ -5,7 +5,7 @@
     android:background="@color/backgroundDefault"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+<!--    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_boletim"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -13,7 +13,7 @@
         android:elevation="4dp"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-    </android.support.v7.widget.Toolbar>
+    </android.support.v7.widget.Toolbar>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_materias"

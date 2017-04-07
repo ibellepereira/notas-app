@@ -5,6 +5,7 @@ import org.lema.notasapp.infra.dagger.module.BoletimModule;
 
 import dagger.Component;
 import org.lema.notasapp.infra.dagger.module.InfraModule;
+import org.lema.notasapp.ui.activity.MainActivity;
 import org.lema.notasapp.ui.activity.SugestaoNomeMateriaActivity;
 
 /**
@@ -16,5 +17,6 @@ public interface BoletimComponent {
 
     void inject(BoletimActivity activity);
     void inject(SugestaoNomeMateriaActivity activity);
+    void inject(MainActivity activity);
 
 }
