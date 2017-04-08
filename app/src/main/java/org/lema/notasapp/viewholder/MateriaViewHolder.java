@@ -30,7 +30,7 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
     final TextView nomeMateria;
     final TextView periodoMateria;
     final TextView codigoMateria;
-    final Button btnSugerir;
+    final TextView btnSugerir;
 
     public MateriaViewHolder(Activity activity, View itemView) {
         super(itemView);
@@ -43,7 +43,7 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
         nomeMateria = (TextView) itemView.findViewById(R.id.disciplina);
         periodoMateria = (TextView) itemView.findViewById(R.id.periodoMateria);
         codigoMateria = (TextView) itemView.findViewById(R.id.codigoMateria);
-        btnSugerir = (Button) itemView.findViewById(R.id.btn_sugerir);
+        btnSugerir = (TextView) itemView.findViewById(R.id.btn_sugerir);
 
     }
 
