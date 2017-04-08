@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Autor;
 import org.lema.notasapp.domain.model.Post;
@@ -22,6 +24,7 @@ import org.lema.notasapp.infra.app.NotasAppAplication;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -60,12 +63,18 @@ public class PostActivity extends AppCompatActivity {
 
         preencheReferencias();
 
-        valoresTeste();
+        buscaParametros();
+
+        //valoresTeste();
 
         preparaToolbar();
 
         preencheValores();
 
+    }
+
+    private void buscaParametros() {
+        post = (Post) getIntent().getSerializableExtra("post");
     }
 
     private void preparaToolbar() {
@@ -127,11 +136,21 @@ public class PostActivity extends AppCompatActivity {
 
     private void preencheValores() {
         titulo.setText(post.getTitulo());
-        dataPostagem.setText(post.getDataPostagem().toString());
+        if (post.getDataPostagem() != null) {
+            SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
+            dataPostagem.setText("Postado em " + data.format(post.getDataPostagem()).toString() + " às " + hora.format(post.getDataPostagem()).toString());
+        }
         texto.setText(post.getTexto());
         autorNome.setText(post.getAutor().getNome());
         autorDescricao.setText(post.getAutor().getDescricao());
-        new DownLoadImageTask(autorFoto).execute(post.getAutor().getLinkParaFoto());
+        Picasso
+                .with(this)
+                .load(post.getAutor() != null ? post.getAutor().getLinkParaFoto() : null)
+                .fit()
+                .into(autorFoto);
+
+        //new DownLoadImageTask(autorFoto).execute(post.getAutor().getLinkParaFoto());
     }
 
     private void valoresTeste(){
@@ -182,26 +201,26 @@ public class PostActivity extends AppCompatActivity {
     }
 
     /*transforma a url em bitmap*/
-    private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
+    /*private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
         ImageView imageView;
 
         public DownLoadImageTask(ImageView imageView){
             this.imageView = imageView;
         }
 
-        /*
+        *//*
             doInBackground(Params... params)
                 Override this method to perform a computation on a background thread.
-         */
+         *//*
         protected Bitmap doInBackground(String...urls){
             String urlOfImage = urls[0];
             Bitmap logo = null;
             try{
                 InputStream is = new URL(urlOfImage).openStream();
-                /*
+                *//*
                     decodeStream(InputStream is)
                         Decode an input stream into a bitmap.
-                 */
+                 *//*
                 logo = BitmapFactory.decodeStream(is);
             }catch(Exception e){ // Catch the download exception
                 e.printStackTrace();
@@ -209,13 +228,13 @@ public class PostActivity extends AppCompatActivity {
             return logo;
         }
 
-        /*
+        *//*
             onPostExecute(Result result)
                 Runs on the UI thread after doInBackground(Params...).
-         */
+         *//*
         protected void onPostExecute(Bitmap result){
             imageView.setImageBitmap(result);
         }
-    }
+    }*/
 
 }

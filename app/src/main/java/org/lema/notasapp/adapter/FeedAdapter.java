@@ -63,6 +63,7 @@ public class FeedAdapter extends RecyclerView.Adapter {
                 postViewHolderComImagem.onBind(posts.get(position));
                 break;
         }
+
     }
 
     @Override
