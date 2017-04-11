@@ -1,16 +1,10 @@
 package org.lema.notasapp.ui.activity;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,15 +13,9 @@ import com.squareup.picasso.Picasso;
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Autor;
 import org.lema.notasapp.domain.model.Post;
-import org.lema.notasapp.domain.service.PostService;
-import org.lema.notasapp.infra.app.NotasAppAplication;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.inject.Inject;
 
 /**
  * Created by Isabelle on 04/04/2017.
@@ -44,7 +32,6 @@ public class PostActivity extends AppCompatActivity {
     private ImageView capa;
     private TextView dataPostagem;
     private TextView texto;
-    private Button likeButton;
     private TextView autorNome;
     private TextView autorDescricao;
     private ImageView autorFoto;
@@ -127,8 +114,6 @@ public class PostActivity extends AppCompatActivity {
         capa = (ImageView) findViewById(R.id.post_foto);
         dataPostagem = (TextView) findViewById(R.id.post_dataPostagem);
         texto = (TextView) findViewById(R.id.post_texto);
-        likeButton = (Button) findViewById(R.id.like_button);
-        likeButton.setOnClickListener(likeButtonOnClickListener);
         autorNome = (TextView) findViewById(R.id.autor_nome);
         autorFoto = (ImageView) findViewById(R.id.autor_foto);
         autorDescricao = (TextView) findViewById(R.id.autor_descricao);
@@ -150,7 +135,6 @@ public class PostActivity extends AppCompatActivity {
                 .fit()
                 .into(autorFoto);
 
-        //new DownLoadImageTask(autorFoto).execute(post.getAutor().getLinkParaFoto());
     }
 
     private void valoresTeste(){
@@ -200,41 +184,5 @@ public class PostActivity extends AppCompatActivity {
         this.corToolBar = corToolBar;
     }
 
-    /*transforma a url em bitmap*/
-    /*private class DownLoadImageTask extends AsyncTask<String,Void,Bitmap> {
-        ImageView imageView;
-
-        public DownLoadImageTask(ImageView imageView){
-            this.imageView = imageView;
-        }
-
-        *//*
-            doInBackground(Params... params)
-                Override this method to perform a computation on a background thread.
-         *//*
-        protected Bitmap doInBackground(String...urls){
-            String urlOfImage = urls[0];
-            Bitmap logo = null;
-            try{
-                InputStream is = new URL(urlOfImage).openStream();
-                *//*
-                    decodeStream(InputStream is)
-                        Decode an input stream into a bitmap.
-                 *//*
-                logo = BitmapFactory.decodeStream(is);
-            }catch(Exception e){ // Catch the download exception
-                e.printStackTrace();
-            }
-            return logo;
-        }
-
-        *//*
-            onPostExecute(Result result)
-                Runs on the UI thread after doInBackground(Params...).
-         *//*
-        protected void onPostExecute(Bitmap result){
-            imageView.setImageBitmap(result);
-        }
-    }*/
 
 }

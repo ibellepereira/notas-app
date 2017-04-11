@@ -96,26 +96,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/like_button"
-                    android:layout_width="@dimen/like_size"
-                    android:layout_height="@dimen/like_size"
-                    android:background="@drawable/dislike" />
-
-                <TextView
-                    android:id="@+id/like_texto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/post_texto_margin"
-                    android:textColor="@color/colorGradeMissing"
-                    android:visibility="invisible"/>
-
-            </LinearLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5sp"
