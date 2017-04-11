@@ -52,7 +52,7 @@
 
     <dimen name="post_texto_margin">10dp</dimen>
     <dimen name="post_texto_size">16sp</dimen>
-    <dimen name="post_toolbar_min_size">300dp</dimen>
+    <dimen name="post_toolbar_size">400dp</dimen>
     <dimen name="like_size">40dp</dimen>
     <dimen name="post_autor_nome_size">24sp</dimen>
     <dimen name="post_autor_descricao_size">12sp</dimen>

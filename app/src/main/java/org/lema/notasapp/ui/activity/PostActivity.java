@@ -17,6 +17,7 @@ import org.lema.notasapp.domain.model.Post;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
  * Created by Isabelle on 04/04/2017.
  */
@@ -52,7 +53,7 @@ public class PostActivity extends AppCompatActivity {
 
         buscaParametros();
 
-        //valoresTeste();
+        valoresTeste();
 
         preparaToolbar();
 
@@ -82,6 +83,7 @@ public class PostActivity extends AppCompatActivity {
                         isShow = false;
                         collapsingToolbarLayout.setTitle(post.getTitulo());
 
+                        dataPostagem.setVisibility(View.INVISIBLE);
                         titulo.setVisibility(View.INVISIBLE);
                     }
                 }
@@ -91,6 +93,7 @@ public class PostActivity extends AppCompatActivity {
                         isShow = true;
                         collapsingToolbarLayout.setTitle(" ");
 
+                        dataPostagem.setVisibility(View.VISIBLE);
                         titulo.setVisibility(View.VISIBLE);
                     }
                 }
@@ -134,7 +137,6 @@ public class PostActivity extends AppCompatActivity {
                 .load(post.getAutor() != null ? post.getAutor().getLinkParaFoto() : null)
                 .fit()
                 .into(autorFoto);
-
     }
 
     private void valoresTeste(){
@@ -169,13 +171,6 @@ public class PostActivity extends AppCompatActivity {
 
     }
 
-    private View.OnClickListener likeButtonOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-
-        }
-    };
-
     public void setPost(Post post){
         this.post = post;
     }
@@ -183,6 +178,5 @@ public class PostActivity extends AppCompatActivity {
     public void setCorToolBar(int corToolBar){
         this.corToolBar = corToolBar;
     }
-
 
 }
